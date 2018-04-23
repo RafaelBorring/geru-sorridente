@@ -99,3 +99,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Visual Studio Code project settings
+.vscode/
+code.desktop
+
+# SQlite database
+db.sqlite3
