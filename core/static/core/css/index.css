@@ -1,0 +1,17 @@
+main {
+    height: 800px;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-family: 'Cocktail Bubbly';
+    src: url(core/fonts/cockb.tty);
+    color: white;
+}
+
+.navbar-blue {
+    background-color: #7190c9;
+}
