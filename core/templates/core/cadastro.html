@@ -1,0 +1,25 @@
+{% extends 'core/index.html' %}
+{% load static %}
+{% block stylesheet %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'core/css/cadastro.css' %}">
+{% endblock stylesheet %}
+{% block main %}
+<main>
+    <div class="row">
+        <div class="col">
+            <form role="form" class="form" method="POST">{% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr><td><legend>Realizar Cadastro</legend></td></tr>
+                            {{ form.as_table }}
+                            <tr><td><button type="submit" class="btn btn-warning">Cadastrar</button></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock main %}

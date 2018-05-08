@@ -1,14 +1,19 @@
+@font-face {
+    font-family: "Cocktail Bubbly";
+    src: url("../fonts/cockb.ttf") format("truetype");
+}
+
 main {
-    height: 800px;
+    min-height: 800px;
 }
 
 img {
     max-width: 100%;
 }
 
-h1 {
-    font-family: 'Cocktail Bubbly';
-    src: url(core/fonts/cockb.tty);
+.nav-name {
+    font-family: "Cocktail Bubbly";
+    font-size: 30px;
     color: white;
 }
 

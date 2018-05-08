@@ -1,9 +1,9 @@
 $(document).ready(function(){
     $(window).scroll(function(){
-        if (window.pageYOffset >= 150) {
-            $('#navbar-top').addClass("fixed-top container");
+        if (window.pageYOffset >= $("img").height()) {
+            $("#navbar-top").addClass("fixed-top container");
         } else {
-            $('#navbar-top').removeClass("fixed-top");
+            $("#navbar-top").removeClass("fixed-top");
         }
     });
 });

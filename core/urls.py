@@ -1,6 +1,7 @@
 from django.urls import path
-from django.views.generic import TemplateView as TV
+from core import views
 
 urlpatterns = [
-    path('', TV.as_view(template_name='core/index.html'), name='core.index'),
+    path('', views.index, name='core.index'),
+    path('cadastro', views.cadastro, name='core.cadastro'),
 ]

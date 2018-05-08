@@ -1,51 +1,88 @@
 {% extends 'core/base.html' %}
-
 {% load static %}
-
-{% block style %}
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
-    <script type="text/javascript" src="{% static 'jquery/js/jquery.slim.min.js' %}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'popper/js/popper.min.js' %}" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'core/js/index.js' %}"></script>
-{% endblock style %}
-
-{% block title %}
-    Geru Sorridente
-{% endblock title %}
-
-{% block header %}
-    <div class="container">
-        <div class="text-center">
-            <img class="img-responsive" src="{% static 'core/img/logo.png' %}" alt="Logo">
+{% block html %}
+<html lang="pt-br">
+    {% block head %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% block stylesheet %}
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+        {% endblock stylesheet %}
+        {% block javascript %}
+        <script type="text/javascript" src="{% static 'jquery/js/jquery.slim.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'popper/js/popper.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'core/js/index.js' %}"></script>
+        {% endblock javascript %}
+        {% block title %}
+        <title>Geru Sorridente</title>
+        {% endblock title %}
+    </head>
+    {% endblock head %}
+    {% block body %}
+    <body>
+        <div class="container">
+            {% block header %}
+            <header>
+                <div class="row">
+                    <div class="col text-center">
+                        <img class="img-responsive" src="{% static 'core/img/logo.png' %}" alt="Logo">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <nav id="navbar-top" class="navbar navbar-blue">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><a href="/" class="nav-name">Inicio</a></th>
+                                            <th scope="col"><a href="/cadastro" class="nav-name">Cadastro</a></th>
+                                            <th scope="col"><a href="#" class="nav-name">Consulta</a></th>
+                                            <th scope="col"><a href="#" class="nav-name">Login</a></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            {% endblock header %}
+            {% block main %}
+            <main>
+                <div class="row">
+                    <div class="col">
+                    </div>
+                </div>
+            </main>
+            {% endblock main %}
+            {% block footer %}
+            <footer>
+                <div class="row">
+                    <div class="col">
+                        <nav class="navbar navbar-blue">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="http://tomardogeru.se.gov.br"><img class="img-responsive" src="{% static 'core/img/logo_prefeitura.jpg' %}" alt="Logo da Prefeitura" height="100px"></a></td>
+                                            <td><a href="#"><img class="img-responsive" src="{% static 'core/img/logo_saude.jpeg' %}" alt="Logo da Secretaria de Saúde" height="100px"></td></td>
+                                            <td><a href="http://dab.saude.gov.br/portaldab/biblioteca.php?conteudo=brasil_sorridente"><img class="img-responsive" src="{% static 'core/img/logo_brasil_sorridente.jpg' %}" alt="Logo do Brasil Sorridente" height="100px"></td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </footer>
+            {% endblock footer %}
         </div>
-        <nav id="navbar-top" class="navbar justify-content-between navbar-blue">
-            <h1>Inicio</h1>
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" aria-label="Search">
-                <button class="btn my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </nav>
-    </div>
-{% endblock header %}
-
-{% block main %}
-    <div class="container">
-
-    </div>
-{% endblock main %}
-
-{% block footer %}
-    <div class="container">
-        <nav class="navbar navbar-blue">
-            <table>
-            <tr align="center">
-                <td><img class="img-responsive" src="{% static 'core/img/logo_prefeitura.jpg' %}" alt="Logo da Prefeitura" height="100px"></td>
-                <td><img class="img-responsive" src="{% static 'core/img/logo_saude.jpeg' %}" alt="Logo da Secretaria de Saúde" height="100px"></td>
-                <td><img class="img-responsive" src="{% static 'core/img/logo_brasil_sorridente.jpg' %}" alt="Logo do Brasil Sorridente" height="100px"></td>
-            </tr>
-            </table>
-        </nav>
-    </div>
-{% endblock footer %}
+    </body>
+    {% endblock body %}
+</html>
+{% endblock html %}
