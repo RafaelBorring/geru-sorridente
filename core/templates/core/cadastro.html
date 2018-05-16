@@ -4,11 +4,16 @@
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'core/css/cadastro.css' %}">
 {% endblock stylesheet %}
+{% block javascript %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'jquery/js/jquery.mask.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'core/js/cadastro.js' %}"></script>
+{% endblock javascript %}
 {% block main %}
 <main>
     <div class="row">
         <div class="col">
-            <form role="form" class="form" method="POST">{% csrf_token %}
+            <form role="form" class="form" method="POST" novalidate>{% csrf_token %}
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>

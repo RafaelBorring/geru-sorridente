@@ -6,12 +6,8 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, \
 class UserManager(BaseUserManager):
 
     def create_user(self, *args, **kwargs):
-        cns = kwargs['cns']
         password = kwargs['password']
         kwargs.pop('password')
-
-        if not cns:
-            raise ValueError('CNS?')
 
         user = self.model(**kwargs)
         user.set_password(password)
@@ -20,7 +16,6 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, *args, **kwargs):
         user = self.create_user(**kwargs)
-        user.nascimento = '2001-01-01'
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -42,11 +37,12 @@ class ACS(models.Model):
 
 class Cadastro(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'cns'
+    REQUIRED_FIELDS = ['nome', 'nascimento']
     objects = UserManager()
 
-    cns = models.CharField('CNS', max_length=15, unique=True)
+    cns = models.CharField('CNS', max_length=18, unique=True)
     nome = models.CharField('Nome Completo', max_length=100)
-    nascimento = models.DateField('Data de Nascimento', null=True)
+    nascimento = models.DateField('Data de Nascimento')
     endereco = models.CharField('Endereço', max_length=100)
     telefone = models.CharField('Telefone', max_length=15)
     acs = models.ForeignKey(ACS, on_delete=models.CASCADE, verbose_name='ACS',

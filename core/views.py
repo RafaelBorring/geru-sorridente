@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from core import forms
 
 
@@ -12,7 +12,8 @@ def cadastro(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
+            return redirect('auth.login')
     else:
         form = forms.CadastroForm
     return render(
-        request, 'core/cadastro.html', {'form': forms.CadastroForm()})
+        request, 'core/cadastro.html', {'form': form})

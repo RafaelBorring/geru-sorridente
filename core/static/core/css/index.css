@@ -11,6 +11,10 @@ img {
     max-width: 100%;
 }
 
+a {
+    color: white;
+}
+
 .nav-name {
     font-family: "Cocktail Bubbly";
     font-size: 30px;
