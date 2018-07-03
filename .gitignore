@@ -106,3 +106,6 @@ code.desktop
 
 # SQlite database
 db.sqlite3
+
+# Bash history
+.bash_history

@@ -7,4 +7,5 @@ urlpatterns = [
     path('logout/', auth_views.logout, {'next_page': '/'}, name='auth.logout'),
     path('', views.index, name='core.index'),
     path('cadastro/', views.cadastro, name='core.cadastro'),
+    path('marcacao/', views.marcacao, name='core.marcacao')
 ]
