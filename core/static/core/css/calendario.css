@@ -1,0 +1,27 @@
+.month {
+    background-color: #7190c9;
+    color: white;
+    width: 80%;
+    height: 80%
+}
+
+.month tr th {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 18px;
+    border: 0.1px solid white;
+    vertical-align: top;
+    padding: 5px;
+    min-width: 10%;
+    min-height: 10%
+}
+
+.month tr td {
+    text-align: left;
+    border: 0.1px solid white;
+    vertical-align: top;
+    padding: 5px;
+    min-width: 10%;
+    min-height: 10%
+}
+

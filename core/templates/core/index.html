@@ -40,7 +40,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col"><a href="/" class="nav-name">Inicio</a></th>
-                                            <th scope="col"><a href="/marcacao" class="nav-name">Consulta</a></th>
+                                            <th scope="col"><a href="/calendario" class="nav-name">Consulta</a></th>
                                             {% if user.is_authenticated %}
                                             <th scope="col" class="nav-name text-right">{{ user.nome }}</th>
                                             <th scope="col"><a href="{% url 'auth.logout' %}" class="text-right">Sair</a></th>
