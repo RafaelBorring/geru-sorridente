@@ -12,9 +12,14 @@
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>
-                            <tr><td><legend>Realizar Marcação da Consulta</legend></td></tr>
+                            <tr>
+                                <td><legend>Realizar marcação da consulta no dia:</legend></td>
+                                <td><legend>{{ data }}</legend></td>
+                            </tr>
                             {{ form.as_table }}
-                            <tr><td><button type="submit" class="btn btn-warning">Marcar</button></td></tr>
+                            <tr>
+                                <td><button type="submit" class="btn btn-warning">Marcar</button></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
