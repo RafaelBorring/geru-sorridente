@@ -1,21 +1,23 @@
-{% extends 'core/cadastro.html' %}
+{% extends 'core/index.html' %}
 {% load static %}
-{% block main %}
-<main>
-    <div class="row">
-        <div class="col">
-            <form role="form" class="form" method="POST" novalidate>{% csrf_token %}
-                <div class="table-responsive">
-                    <table class="table">
-                        <tbody>
-                            <tr><td><legend>Realizar Login</legend></td></tr>
-                            {{ form.as_table }}
-                            <tr><td><button type="submit" class="btn btn-warning">Login</button></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </form>
+{% block section %}
+<section>
+    <div class="conteiner-fluid">
+        <div class="row">
+            <div class="col">
+                <form role="form" class="form" method="POST" novalidate>{% csrf_token %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr><td><legend>Realizar Login</legend></td></tr>
+                                    {{ form.as_table }}
+                                <tr><td><button type="submit" class="btn btn-warning">Login</button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</main>
-{% endblock main %}
+</section>
+{% endblock section %}

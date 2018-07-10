@@ -1,93 +1,100 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block html %}
-<html lang="pt-br">
-    {% block head %}
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        {% block stylesheet %}
-        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
-        {% endblock stylesheet %}
-        {% block javascript %}
-        <script type="text/javascript" src="{% static 'jquery/js/jquery.slim.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'popper/js/popper.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'core/js/index.js' %}"></script>
-        {% endblock javascript %}
-        {% block title %}
-        <title>Geru Sorridente</title>
-        {% endblock title %}
-    </head>
-    {% endblock head %}
-    {% block body %}
-    <body>
-        <div class="container">
-            {% block header %}
-            <header>
-                <div class="row">
-                    <div class="col text-center">
+{% block title %}
+    <title>Geru Sorridente</title>
+{% endblock title %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+{% endblock style %}
+{% block script %}
+    <script type="text/javascript" src="{% static 'jquery/js/jquery.slim.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery/js/jquery.mask.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'popper/js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/index.js' %}"></script>
+{% endblock script %}
+{% block header %}
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-center">
                         <img class="img-responsive" src="{% static 'core/img/logo.png' %}" alt="Logo">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <nav id="navbar-top" class="navbar navbar-blue">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col"><a href="/" class="nav-name">Inicio</a></th>
-                                            <th scope="col"><a href="/calendario" class="nav-name">Consulta</a></th>
-                                            {% if user.is_authenticated %}
-                                            <th scope="col" class="nav-name text-right">{{ user.nome }}</th>
-                                            <th scope="col"><a href="{% url 'auth.logout' %}" class="text-right">Sair</a></th>
-                                            {% else %}
-                                            <th scope="col"><a href="/cadastro" class="nav-name">Cadastro</a></th>
-                                            <th scope="col"><a href="{% url 'auth.login' %}" class="nav-name">Login</a></th>
-                                            {% endif %}
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </header>
-            {% endblock header %}
-            {% block main %}
-            <main>
-                <div class="row">
-                    <div class="col">
-                    </div>
-                </div>
-            </main>
-            {% endblock main %}
-            {% block footer %}
-            <footer>
-                <div class="row">
-                    <div class="col">
-                        <nav class="navbar navbar-blue">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="http://tomardogeru.se.gov.br"><img class="img-responsive" src="{% static 'core/img/logo_prefeitura.jpg' %}" alt="Logo da Prefeitura" height="100px"></a></td>
-                                            <td><a href="#"><img class="img-responsive" src="{% static 'core/img/logo_saude.jpeg' %}" alt="Logo da Secretaria de Saúde" height="100px"></td></td>
-                                            <td><a href="http://dab.saude.gov.br/portaldab/biblioteca.php?conteudo=brasil_sorridente"><img class="img-responsive" src="{% static 'core/img/logo_brasil_sorridente.jpg' %}" alt="Logo do Brasil Sorridente" height="100px"></td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </footer>
-            {% endblock footer %}
+            </div>
         </div>
-    </body>
-    {% endblock body %}
-</html>
-{% endblock html %}
+    </header>
+{% endblock header %}
+{% block nav %}
+    <nav id="navbar-top" class="navbar navbar-expand-lg navbar-blue">
+        {% if user.is_authenticated %}
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/calendario">Calendário de Consultas <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <h1>{{ user.nome }}</h1>
+            <a class="btn btn-warning" href="{% url 'auth.logout' %}">Sair</a>
+        {% else %}
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <form role="form" class="form-inline my-lg" method="POST" action="{% url 'auth.login' %}" novalidate>{% csrf_token %}
+                <input type="text" name="username" autofocus maxlength="254" required id="id_username" />
+                <input type="password" name="password" required id="id_password" />
+                <button type="submit" class="btn btn-warning">Entrar</button>
+            </form>
+        {% endif %}
+    </nav>
+{% endblock nav %}
+{% block section %}
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <form role="form" class="form" method="POST" novalidate>{% csrf_token %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr><td><legend>Realizar Cadastro</legend></td></tr>
+                                        {{ form.as_table }}
+                                    <tr><td><button type="submit" class="btn btn-warning">Cadastrar</button></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock section %}
+{% block footer %}
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-5">
+                    <div class="d-flex justify-content-start">
+                        <a href="http://tomardogeru.se.gov.br"><img class="img-responsive" src="{% static 'core/img/logo_prefeitura.png' %}" alt="Logo da Prefeitura" height="100px"></a>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="d-flex justify-content-center">
+                        <a href="http://dab.saude.gov.br/portaldab/biblioteca.php?conteudo=brasil_sorridente"><img class="img-responsive" src="{% static 'core/img/logo_brasil_sorridente.png' %}" alt="Logo do Brasil Sorridente" height="100px"></a>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="d-flex justify-content-end">
+                        <a href="#"><img class="img-responsive" src="{% static 'core/img/logo_saude.png' %}" alt="Logo da Secretaria de Saúde" height="100px"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock footer %}

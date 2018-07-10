@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-{% block html %}
-    {% block head %}
-        {% block stylesheet %}{% endblock stylesheet %}
-        {% block javascript %}{% endblock javascript %}
-        {% block title %}{% endblock title %}
-    {% endblock head %}
-    {% block body %}
-        {% block header %}{% endblock header %}
-        {% block main %}{% endblock main %}
-        {% block footer %}{% endblock footer %}
-    {% endblock body %}
-{% endblock html %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block title %}{% endblock title %}
+    {% block style %}{% endblock style %}
+    {% block script %}{% endblock script %}
+</head>
+<body>
+    {% block header %}{% endblock header %}
+    {% block nav %}{% endblock nav %}
+    {% block section %}{% endblock section %}
+    {% block footer %}{% endblock footer %}
+</body>
+</html>

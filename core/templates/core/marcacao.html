@@ -1,30 +1,32 @@
 {% extends 'core/index.html' %}
 {% load static %}
-{% block stylesheet %}
-{{ block.super }}
-<link rel="stylesheet" href="{% static 'core/css/cadastro.css' %}">
-{% endblock stylesheet %}
-{% block main %}
-<main>
-    <div class="row">
-        <div class="col">
-            <form role="form" class="form" method="POST" novalidate>{% csrf_token %}
-                <div class="table-responsive">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td><legend>Realizar marcação da consulta no dia:</legend></td>
-                                <td><legend>{{ data }}</legend></td>
-                            </tr>
-                            {{ form.as_table }}
-                            <tr>
-                                <td><button type="submit" class="btn btn-warning">Marcar</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </form>
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'core/css/cadastro.css' %}">
+{% endblock style %}
+{% block section %}
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <form role="form" class="form" method="POST" novalidate>{% csrf_token %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td><legend>Realizar marcação da consulta no dia:</legend></td>
+                                    <td><legend>{{ data }}</legend></td>
+                                </tr>
+                                    {{ form.as_table }}
+                                <tr>
+                                    <td><button type="submit" class="btn btn-warning">Marcar</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</main>
-{% endblock main %}
+</section>
+{% endblock section %}

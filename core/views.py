@@ -9,10 +9,6 @@ from core import forms
 
 
 def index(request):
-    return render(request, 'core/index.html')
-
-
-def cadastro(request):
     if request.method == "POST":
         form = forms.CadastroForm(request.POST)
         if form.is_valid():
@@ -21,8 +17,7 @@ def cadastro(request):
             return redirect('auth.login')
     else:
         form = forms.CadastroForm
-    return render(
-        request, 'core/cadastro.html', {'form': form})
+    return render(request, 'core/index.html', {'form': form})
 
 
 @login_required(login_url='/login')

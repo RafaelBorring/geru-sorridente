@@ -3,8 +3,26 @@
     src: url("../fonts/cockb.ttf") format("truetype");
 }
 
-main {
-    min-height: 800px;
+h1 {
+    font-family: "Cocktail Bubbly";
+    color: white;
+}
+
+html, body {
+    height: 100%;
+}
+
+section {
+    min-height: 100%;
+}
+
+footer {
+    background-color: #7190c9;
+    height: 100px;
+}
+
+footer img {
+    height: 100px;
 }
 
 img {
@@ -12,7 +30,21 @@ img {
 }
 
 a {
+    font-size: 20px;
     color: white;
+}
+
+legend {
+    font-size: 40px;
+    color: #7190c9;
+}
+
+label {
+    color: #7190c9;
+}
+
+.errorlist {
+    color: red;
 }
 
 .nav-name {
