@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.utils.safestring import mark_safe
 
-from core import forms
+from core import forms, models
 
 
 def index(request):
@@ -39,8 +39,9 @@ def marcacao(request, ano, mes, dia):
 
 
 class Calendario(LocaleHTMLCalendar):
-    def __init__(self):
+    def __init__(self, user):
         super(Calendario, self).__init__(6, 'pt_BR.UTF-8')
+        self.equipe = user.acs.equipe
 
     def formatmonth(self, ano, mes):
         self.ano = ano
@@ -51,13 +52,36 @@ class Calendario(LocaleHTMLCalendar):
         if dia == 0:
             return '<td class="noday">&nbsp;</td>'
         else:
-            return '<td class="{}"><a href="/marcacao/{}/{}/{}">{}</a></td>'\
-                .format(self.cssclasses[semana], self.ano, self.mes, dia, dia)
+            vagas = 10 - models.Marcacao.objects.filter(
+                data='{}-{}-{}'.format(self.ano, self.mes, dia),
+                user__acs__equipe=self.equipe).count()
+            if vagas == 0:
+                return '<td class="{}">\
+                <a class="btn btn-danger" href="#">{:02d}</a>\
+                <h5>{} Vagas</h5>\
+                </td>'\
+                    .format(self.cssclasses[semana], dia, vagas)
+            if vagas > 1:
+                return '<td class="{}">\
+                <a class="btn btn-success" href="/marcacao/{}/{}/{}">{:02d}</a>\
+                <h5>{} Vagas</h5>\
+                </td>'\
+                    .format(self.cssclasses[semana], self.ano, self.mes, dia,
+                            dia, vagas)
+            else:
+                return '<td class="{}">\
+                <a class="btn btn-warning" href="/marcacao/{}/{}/{}">{:02d}</a>\
+                <h5>{} Vaga</h5>\
+                </td>'\
+                    .format(self.cssclasses[semana], self.ano, self.mes, dia,
+                            dia, vagas)
 
 
 def calendario(request):
     hoje = datetime.now()
-    c = Calendario().formatmonth(hoje.year, hoje.month)
+    user = request.user
+    c = Calendario(user).formatmonth(hoje.year, hoje.month)
 
     return render(
-        request, 'core/calendario.html', {'calendario': mark_safe(c)})
+        request, 'core/calendario.html', {'calendario': mark_safe(c),
+                                          'equipe': user.acs.equipe})

@@ -5,28 +5,28 @@
     <link rel="stylesheet" href="{% static 'core/css/cadastro.css' %}">
 {% endblock style %}
 {% block section %}
-<section>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <form role="form" class="form" method="POST" novalidate>{% csrf_token %}
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td><legend>Realizar marcação da consulta no dia:</legend></td>
-                                    <td><legend>{{ data }}</legend></td>
-                                </tr>
-                                    {{ form.as_table }}
-                                <tr>
-                                    <td><button type="submit" class="btn btn-warning">Marcar</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </form>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <form role="form" class="form" method="POST" novalidate>{% csrf_token %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td><legend>Realizar marcação da consulta no dia:</legend></td>
+                                        <td><legend>{{ data }}</legend></td>
+                                    </tr>
+                                        {{ form.as_table }}
+                                    <tr>
+                                        <td><button type="submit" class="btn btn-warning">Marcar</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock section %}
