@@ -7,7 +7,7 @@ from django.db import models
 class Equipes(models.Model):
     nome = models.CharField('Nome', max_length=50)
     ine = models.CharField('INE', max_length=10)
-    area = models.CharField('Área', max_length=4)
+    area = models.IntegerField('Área')
 
     class Meta:
         verbose_name = 'Equipe'
