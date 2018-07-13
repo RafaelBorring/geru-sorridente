@@ -11,9 +11,9 @@ $(document).ready(function(){
     $("input").keyup(function(){
 		this.value = this.value.toUpperCase();
     });
-    $("#id_username").mask("999 9999 9999 9999");
-    $("#id_username").attr("placeholder", "CNS");
-    $("#id_password").attr("placeholder", "Senha");
+    $("input[name='username']").mask("999 9999 9999 9999");
+    $("input[name='username']").attr("placeholder", "CNS");
+    $("input[name='password']").attr("placeholder", "Senha");
     $("#id_cns").mask("999 9999 9999 9999");
     $("#id_cns").attr("placeholder", "700 0000 0000 0000");
     $("#id_nome").attr("placeholder", "JOÃO SANTOS");
