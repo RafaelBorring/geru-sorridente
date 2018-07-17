@@ -32,7 +32,7 @@ class Odontologo(AbstractBaseUser):
     cns = models.CharField('CNS', max_length=18, unique=True)
     nome = models.CharField('Nome Completo', max_length=100)
     equipe = models.ForeignKey(
-        'Equipe', on_delete=models.CASCADE, verbose_name='Equipe'
+        Equipe, on_delete=models.CASCADE, verbose_name='Equipe'
     )
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
@@ -51,8 +51,9 @@ class ACS(AbstractBaseUser):
     cns = models.CharField('CNS', max_length=18, unique=True)
     nome = models.CharField('Nome Completo', max_length=100)
     equipe = models.ForeignKey(
-        'Equipe', on_delete=models.CASCADE, verbose_name='Equipe'
+        Equipe, on_delete=models.CASCADE, verbose_name='Equipe'
     )
+    micro = models.PositiveIntegerField('Micro')
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
@@ -73,7 +74,7 @@ class Usuario(AbstractBaseUser):
     endereco = models.CharField('Endereço', max_length=100)
     telefone = models.CharField('Telefone', max_length=15)
     acs = models.ForeignKey(
-        'ACS', on_delete=models.CASCADE, verbose_name='ACS'
+        ACS, on_delete=models.CASCADE, verbose_name='ACS'
     )
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
@@ -90,7 +91,7 @@ class Marcacao(models.Model):
     M = (
         ('1', 'Consulta de rotina'),
         ('2', 'Limpeza'),
-        ('3', 'Tratamento Clínico (Extração/Restauração)'),
+        ('3', 'Tratamento clínico (Extração/Restauração)'),
         ('4', 'Prótese'),
         ('5', 'Outros motivos')
     )
