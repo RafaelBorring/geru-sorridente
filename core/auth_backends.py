@@ -1,20 +1,32 @@
-from django.core.exceptions import ObjectDoesNotExist
-
 from core import models
 
 
-class Usuario:
-    def authenticate(self, request, username=None, password=None):
+class Auth(object):
+    def authenticate(self, username=None, password=None, **kwargs):
         try:
-            user = models.Usuario.objects.get(cns=username)
+            user = self.UserModel.objects.get(cns=username)
             if user.check_password(password):
                 return user
-        except ObjectDoesNotExist:
-            return None
+        except self.UserModel.DoesNotExist:
+            self.UserModel().set_password(password)
 
     def get_user(self, user_id):
         try:
-            user = models.Usuario.objects.get(pk=user_id)
-            return user
-        except ObjectDoesNotExist:
+            return self.UserModel.objects.get(pk=user_id)
+        except self.UserModel.DoesNotExist:
             return None
+
+
+class Odontologo(Auth):
+    def __init__(self):
+        self.UserModel = models.Odontologo
+
+
+class ACS(Auth):
+    def __init__(self):
+        self.UserModel = models.ACS
+
+
+class Usuario(Auth):
+    def __init__(self):
+        self.UserModel = models.Usuario

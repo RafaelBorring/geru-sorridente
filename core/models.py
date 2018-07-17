@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
@@ -105,7 +104,7 @@ class Marcacao(models.Model):
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, editable=False, on_delete=models.CASCADE,
+        Usuario, editable=False, on_delete=models.CASCADE,
         verbose_name='Usuário'
     )
 

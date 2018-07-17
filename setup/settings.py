@@ -102,6 +102,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
+    'core.auth_backends.Odontologo',
+    'core.auth_backends.ACS',
     'core.auth_backends.Usuario'
 ]
 
