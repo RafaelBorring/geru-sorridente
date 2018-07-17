@@ -8,6 +8,8 @@ urlpatterns = [
     path('logout/', auth_views.logout, name='auth.logout'),
     path('', views.index, name='core.index'),
     path('calendario/', views.calendario, name='core.calendario'),
-    path('marcacao/<int:ano>/<int:mes>/<int:dia>',
-         views.marcacao, name='core.marcacao')
+    path(
+        'marcacao/<int:ano>/<int:mes>/<int:dia>',
+        views.marcacao, name='core.marcacao'
+    )
 ]

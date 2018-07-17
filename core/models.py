@@ -4,36 +4,29 @@ from django.db import models
 
 
 class UserManager(BaseUserManager):
-
     def create_user(self, *args, **kwargs):
-
         password = kwargs['password']
         kwargs.pop('password')
         user = self.model(**kwargs)
         user.set_password(password)
         user.save(using=self._db)
-
         return user
 
 
 class Equipe(models.Model):
-
     nome = models.CharField('Nome', max_length=50)
     ine = models.CharField('INE', max_length=10)
     area = models.PositiveIntegerField('Área')
 
     class Meta:
-
         verbose_name = 'Equipe'
         verbose_name_plural = 'Equipes'
 
     def __str__(self):
-
         return '{} - {}'.format(self.area, self.nome)
 
 
 class Odontologo(AbstractBaseUser):
-
     objects = UserManager()
     USERNAME_FIELD = 'cns'
     cns = models.CharField('CNS', max_length=18, unique=True)
@@ -45,17 +38,14 @@ class Odontologo(AbstractBaseUser):
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
     class Meta:
-
         verbose_name = 'Odontólogo'
         verbose_name_plural = 'Odontólogos'
 
     def __str__(self):
-
         return '{} - {}'.format(self.equipe, self.nome)
 
 
 class ACS(AbstractBaseUser):
-
     objects = UserManager()
     USERNAME_FIELD = 'cns'
     cns = models.CharField('CNS', max_length=18, unique=True)
@@ -67,17 +57,14 @@ class ACS(AbstractBaseUser):
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
     class Meta:
-
         verbose_name = 'ACS'
         verbose_name_plural = 'ACS'
 
     def __str__(self):
-
         return '{} - {}'.format(self.equipe, self.nome)
 
 
 class Usuario(AbstractBaseUser):
-
     objects = UserManager()
     USERNAME_FIELD = 'cns'
     cns = models.CharField('CNS', max_length=18, unique=True)
@@ -92,17 +79,14 @@ class Usuario(AbstractBaseUser):
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
     class Meta:
-
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'
 
     def __str__(self):
-
         return '{} - {}'.format(self.cns, self.nome)
 
 
 class Marcacao(models.Model):
-
     M = (
         ('1', 'Consulta de rotina'),
         ('2', 'Limpeza'),
@@ -125,10 +109,8 @@ class Marcacao(models.Model):
     )
 
     class Meta:
-
         verbose_name = 'Marcação'
         verbose_name_plural = 'Marcações'
 
     def __str__(self):
-
         return '{} - {}'.format(self.user.cns, self.user.nome)
