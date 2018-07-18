@@ -31,7 +31,7 @@ class Odontologo(AbstractBaseUser):
     cns = models.CharField('CNS', max_length=18, unique=True)
     nome = models.CharField('Nome Completo', max_length=100)
     equipe = models.ForeignKey(
-        Equipe, on_delete=models.CASCADE, verbose_name='Equipe'
+        'Equipe', on_delete=models.CASCADE, verbose_name='Equipe'
     )
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
@@ -50,7 +50,7 @@ class ACS(AbstractBaseUser):
     cns = models.CharField('CNS', max_length=18, unique=True)
     nome = models.CharField('Nome Completo', max_length=100)
     equipe = models.ForeignKey(
-        Equipe, on_delete=models.CASCADE, verbose_name='Equipe'
+        'Equipe', on_delete=models.CASCADE, verbose_name='Equipe'
     )
     micro = models.PositiveIntegerField('Micro')
     create_on = models.DateField('Criado em:', auto_now_add=True)
@@ -73,7 +73,7 @@ class Usuario(AbstractBaseUser):
     endereco = models.CharField('Endereço', max_length=100)
     telefone = models.CharField('Telefone', max_length=15)
     acs = models.ForeignKey(
-        ACS, on_delete=models.CASCADE, verbose_name='ACS'
+        'ACS', on_delete=models.CASCADE, verbose_name='ACS'
     )
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
@@ -87,24 +87,22 @@ class Usuario(AbstractBaseUser):
 
 
 class Marcacao(models.Model):
-    M = (
-        ('1', 'Consulta de rotina'),
-        ('2', 'Limpeza'),
-        ('3', 'Tratamento clínico (Extração/Restauração)'),
-        ('4', 'Prótese'),
-        ('5', 'Outros motivos')
-    )
     P = (
         ('1', 'Sim'),
-        ('2', 'Não')
+        ('0', 'Não')
     )
     data = models.DateField('Data')
-    motivo = models.CharField('Motivo da consulta', max_length=1, choices=M)
-    protese = models.CharField('Usa prótese', max_length=1, choices=P)
+    motivo = models.ForeignKey(
+        'Motivo', on_delete=models.CASCADE, verbose_name='Motivo',
+        default=False
+    )
+    protese = models.CharField(
+        'Usa prótese', max_length=1, choices=P, default=False
+    )
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
     user = models.ForeignKey(
-        Usuario, editable=False, on_delete=models.CASCADE,
+        'Usuario', editable=False, on_delete=models.CASCADE,
         verbose_name='Usuário'
     )
 
@@ -114,3 +112,14 @@ class Marcacao(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.user.cns, self.user.nome)
+
+
+class Motivo(models.Model):
+    motivo = models.CharField('Motivo', max_length=50)
+
+    class Meta:
+        verbose_name = 'Motivo'
+        verbose_name_plural = 'Motivos'
+
+    def __str__(self):
+        return self.motivo

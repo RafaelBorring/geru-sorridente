@@ -32,3 +32,7 @@ class MarcacaoForm(forms.ModelForm):
     class Meta:
         model = models.Marcacao
         fields = ['motivo', 'protese']
+        widgets = {
+            'motivo': forms.RadioSelect,
+            'protese': forms.RadioSelect
+        }
