@@ -32,7 +32,32 @@ def marcacao(request, ano, mes, dia):
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
-            post.data = '{}-{}-{}'.format(ano, mes, dia)
+            post.data = dia_marcacao.strftime('%Y-%m-%d')
+            listed = models.Marcacao.objects.filter(
+                user=post.user
+            ).order_by('data').reverse()
+            if listed:
+                last_date = listed[0].data.toordinal()
+            else:
+                last_date = date.today().toordinal() - 15
+            if date.today().toordinal() - last_date <= 0:
+                return render(request, 'core/marcacao.html', {
+                    'form': form, 'data': data,
+                    'message': '''
+                    Já existe uma consulta agendada no dia {}
+                    '''.format(
+                        date.fromordinal(last_date).strftime('%d/%m/%Y')
+                    )})
+            elif dia_marcacao.toordinal() - last_date <= 15:
+                return render(request, 'core/marcacao.html', {
+                    'form': form, 'data': data,
+                    'message': '''
+                    Última consulta realizada em {}\n
+                    A próxima só pode ser realizada a partir do dia {}
+                    '''.format(
+                        date.fromordinal(last_date).strftime('%d/%m/%Y'),
+                        date.fromordinal(last_date + 16).strftime('%d/%m/%Y')
+                    )})
             post.save()
             return render(request, 'core/realizada.html', {'data': data})
     else:
