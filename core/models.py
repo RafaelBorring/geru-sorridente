@@ -75,6 +75,7 @@ class Usuario(AbstractBaseUser):
     acs = models.ForeignKey(
         'ACS', on_delete=models.CASCADE, verbose_name='ACS'
     )
+    locked = models.BooleanField('Bloqueado', default=False)
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
@@ -109,6 +110,7 @@ class Marcacao(models.Model):
     class Meta:
         verbose_name = 'Marcação'
         verbose_name_plural = 'Marcações'
+        ordering = ['data']
 
     def __str__(self):
         return '{} - {}'.format(self.user.cns, self.user.nome)
@@ -120,6 +122,7 @@ class Motivo(models.Model):
     class Meta:
         verbose_name = 'Motivo'
         verbose_name_plural = 'Motivos'
+        ordering = ['motivo']
 
     def __str__(self):
         return self.motivo

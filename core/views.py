@@ -58,6 +58,15 @@ def marcacao(request, ano, mes, dia):
                         date.fromordinal(last_date).strftime('%d/%m/%Y'),
                         date.fromordinal(last_date + 16).strftime('%d/%m/%Y')
                     )})
+            elif post.user.locked:
+                return render(request, 'core/marcacao.html', {
+                    'form': form, 'data': data,
+                    'message': '''
+                    Usuário bloqueado por não comparecer a uma consulta\n
+                    Procure por {} para dar uma justificativa
+                    '''.format(
+                        post.user.acs.nome
+                    )})
             post.save()
             return render(request, 'core/realizada.html', {'data': data})
     else:
