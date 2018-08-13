@@ -132,3 +132,14 @@ def calendario(request):
             'calendario': mark_safe(c), 'equipe': user.acs.equipe
         }
     )
+
+
+@login_required(login_url='auth.login')
+def consultas(request):
+    user = request.user
+    listed = models.Marcacao.objects.filter(user=user).reverse()
+    return render(
+        request, 'core/consultas.html', {
+            'consultas': listed
+        }
+    )

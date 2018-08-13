@@ -1,9 +1,5 @@
 {% extends 'core/index.html' %}
 {% load static %}
-{% block stylesheet %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'core/css/cadastro.css' %}">
-{% endblock stylesheet %}
 {% block section %}
     <section>
         <div class="container-fluid">
@@ -12,8 +8,12 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
-                                <tr><td><legend>Consulta no dia {{ data }} marcada com sucesso!</legend></td></tr>
-                                <tr><td><button type="button" onclick="location.href='/'" class="btn btn-warning">Imprimir Requisição</button></td></tr>
+                            {% for list in consultas %}
+                                <tr>
+                                    <td><legend>{{ list.data }}</legend></td>
+                                    <td><button type="button" onclick="location.href='/'" class="btn btn-warning">Imprimir Requisição</button></td>
+                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
