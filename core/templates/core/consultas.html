@@ -1,5 +1,9 @@
 {% extends 'core/index.html' %}
 {% load static %}
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'core/css/cadastro.css' %}">
+{% endblock style %}
 {% block section %}
     <section>
         <div class="container-fluid">
@@ -11,11 +15,24 @@
                             {% for list in consultas %}
                                 <tr>
                                     <td><legend>{{ list.data }}</legend></td>
-                                    <td><button type="button" onclick="location.href='/'" class="btn btn-warning">Imprimir Requisição</button></td>
+                                    <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#req">Imprimir Requisição</button></td>
                                 </tr>
                             {% endfor %}
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="req" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="req">Requisição</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <object type="application/pdf" data="{% url 'core.requisicao' %}#zoom=page-width" width="100%" height="100%"></object>
+                        </div>
                     </div>
                 </div>
             </div>

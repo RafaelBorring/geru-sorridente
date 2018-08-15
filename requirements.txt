@@ -1,1 +1,2 @@
 Django==2.0.4
+reportlab==3.5.5

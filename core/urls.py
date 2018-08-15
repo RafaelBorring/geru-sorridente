@@ -12,5 +12,6 @@ urlpatterns = [
         'marcacao/<int:ano>/<int:mes>/<int:dia>',
         views.marcacao, name='core.marcacao'
     ),
-    path('consultas/', views.consultas, name='core.consultas')
+    path('consultas/', views.consultas, name='core.consultas'),
+    path('requisicao/', views.requisicao, name='core.requisicao')
 ]

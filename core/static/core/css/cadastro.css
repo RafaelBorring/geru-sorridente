@@ -1,16 +1,20 @@
 legend {
     font-size: 40px;
-    color: #7190c9;
+    color: #7190c9
 }
 
 label {
-    color: #7190c9;
+    color: #7190c9
 }
 
 li {
-    list-style-type: none;
+    list-style-type: none
 }
 
 .errorlist, h4 {
-    color: red;
+    color: red
+}
+
+.modal-body {
+    height: calc(100vh - 200px)
 }

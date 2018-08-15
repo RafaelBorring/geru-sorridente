@@ -1,9 +1,14 @@
 from calendar import LocaleHTMLCalendar, different_locale, month_name
 from datetime import date
+from io import BytesIO
 
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.utils.safestring import mark_safe
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.units import cm
+from reportlab.pdfgen.canvas import Canvas
 
 from core import forms, models
 
@@ -143,3 +148,48 @@ def consultas(request):
             'consultas': listed
         }
     )
+
+
+@login_required(login_url='auth.login')
+def requisicao(request):
+    margin = 2*cm
+    x, y = A4
+    response = HttpResponse(content_type='application/pdf')
+    tmp_pdf = BytesIO()
+    pdf = Canvas(tmp_pdf, pagesize=A4)
+    pdf.setFont('Times-Bold', 14)
+    pdf.drawString(
+        margin, y-margin, 'Secretaria Municipal de Saúde de Tomar do Geru'
+    )
+    pdf.drawString(
+        x-margin-4.5*cm, y-margin,
+        'Emissão: {}'.format(date.today().strftime('%d/%m/%Y'))
+    )
+    pdf.drawString(
+        margin, y-margin-cm, 'Requisição de Consulta Odontológica'
+    )
+    pdf.line(margin, y-margin-1.3*cm, x-margin, y-margin-1.3*cm)
+    pdf.drawString(
+        margin, y-margin-2*cm, 'Unidade:'
+    )
+    pdf.drawString(
+        margin, y-margin-3*cm, 'Equipe:'
+    )
+    pdf.drawString(
+        margin, y-margin-4*cm, 'Data:'
+    )
+    pdf.line(margin, y-margin-4.3*cm, x-margin, y-margin-4.3*cm)
+    pdf.drawString(
+        margin, y-margin-5*cm, 'CNS:'
+    )
+    pdf.drawString(
+        margin, y-margin-6*cm, 'Nome:'
+    )
+    pdf.drawString(
+        margin, y-margin-7*cm, 'Logradouro:'
+    )
+    pdf.showPage()
+    pdf.save()
+    response.write(tmp_pdf.getvalue())
+    tmp_pdf.close()
+    return response
