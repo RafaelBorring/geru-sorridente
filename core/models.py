@@ -1,6 +1,11 @@
+from calendar import day_name, different_locale
+from datetime import date
+
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
-from radiogrid import RadioGridField
+
+with different_locale('pt_BR.UTF-8'):
+    DIA_SEMANA = tuple((range(7), x.title()) for x in day_name)
 
 
 class UserManager(BaseUserManager):
@@ -20,6 +25,7 @@ class Unidade(models.Model):
     class Meta:
         verbose_name = 'Unidade'
         verbose_name_plural = 'Unidades'
+        ordering = ['nome']
 
     def __str__(self):
         return '{} - {}'.format(self.cnes, self.nome)
@@ -36,6 +42,7 @@ class Equipe(models.Model):
     class Meta:
         verbose_name = 'Equipe'
         verbose_name_plural = 'Equipes'
+        ordering = ['area']
 
     def __str__(self):
         return '{:04d} - {}'.format(self.area, self.nome)
@@ -49,12 +56,14 @@ class Odontologo(AbstractBaseUser):
     equipe = models.ForeignKey(
         'Equipe', on_delete=models.CASCADE, verbose_name='Equipe'
     )
+    tipo = models.PositiveIntegerField('Tipo de Acesso', default=1)
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
     class Meta:
         verbose_name = 'Odontólogo'
         verbose_name_plural = 'Odontólogos'
+        ordering = ['equipe__area', 'nome']
 
     def __str__(self):
         return '{} - {}'.format(self.equipe, self.nome)
@@ -69,12 +78,14 @@ class ACS(AbstractBaseUser):
         'Equipe', on_delete=models.CASCADE, verbose_name='Equipe'
     )
     micro = models.PositiveIntegerField('Micro')
+    tipo = models.PositiveIntegerField('Tipo de Acesso', default=2)
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
     class Meta:
         verbose_name = 'ACS'
         verbose_name_plural = 'ACS'
+        ordering = ['equipe__area', 'micro', 'nome']
 
     def __str__(self):
         return '{} - {}'.format(self.equipe, self.nome)
@@ -92,12 +103,14 @@ class Usuario(AbstractBaseUser):
         'ACS', on_delete=models.CASCADE, verbose_name='ACS'
     )
     locked = models.BooleanField('Bloqueado', default=False)
+    tipo = models.PositiveIntegerField('Tipo de Acesso', default=3)
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
     class Meta:
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'
+        ordering = ['nome']
 
     def __str__(self):
         return '{} - {}'.format(self.cns, self.nome)
@@ -126,7 +139,7 @@ class Marcacao(models.Model):
     class Meta:
         verbose_name = 'Marcação'
         verbose_name_plural = 'Marcações'
-        ordering = ['data']
+        ordering = ['-data']
 
     def __str__(self):
         return '{} - {} - {}'.format(self.data, self.user.cns, self.user.nome)
@@ -142,3 +155,17 @@ class Motivo(models.Model):
 
     def __str__(self):
         return self.motivo
+
+
+class Agenda(models.Model):
+    mes = models.CharField(
+        'Mês de Referência', max_length=2,
+        default='{:02d}'.format(date.today().month+1)
+    )
+    ano = models.CharField(
+        'Ano de Referência', max_length=4, default=date.today().year
+    )
+    dia = models.CharField(
+        'Dias da Semana', max_length=2, choices=DIA_SEMANA
+    )
+    tempo = models.PositiveIntegerField('Tempo Médio da Consulta', default=20)
