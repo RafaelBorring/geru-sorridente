@@ -13,5 +13,5 @@ urlpatterns = [
         views.marcacao, name='core.marcacao'
     ),
     path('consultas/', views.consultas, name='core.consultas'),
-    path('requisicao/', views.requisicao, name='core.requisicao')
+    path('requisicao/<int:id>/', views.requisicao, name='core.requisicao')
 ]

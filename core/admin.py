@@ -30,6 +30,7 @@ class ACSAdmin(admin.ModelAdmin):
         ]
 
 
+admin.site.register(models.Unidade)
 admin.site.register(models.Equipe)
 admin.site.register(models.Odontologo, OdontologoAdmin)
 admin.site.register(models.ACS, ACSAdmin)

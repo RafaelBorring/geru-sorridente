@@ -7,35 +7,35 @@
 {% block section %}
     <section>
         <div class="container-fluid">
+            {% for list in consultas %}
             <div class="row">
                 <div class="col">
                     <div class="table-responsive">
                         <table class="table">
-                            <tbody>
-                            {% for list in consultas %}
+                            <tbody>                            
                                 <tr>
                                     <td><legend>{{ list.data }}</legend></td>
-                                    <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#req">Imprimir Requisição</button></td>
+                                    <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#req{{ list.id }}">Imprimir Requisição</button></td>
                                 </tr>
-                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="req" tabindex="-1" role="dialog">
+            <div class="modal fade" id="req{{ list.id }}" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="req">Requisição</h5>
+                            <h5 class="modal-title" id="req{{ list.id }}">Requisição</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
-                            <object type="application/pdf" data="{% url 'core.requisicao' %}#zoom=page-width" width="100%" height="100%"></object>
+                            <object type="application/pdf" data="{% url 'core.requisicao' id=list.id %}#zoom=page-width" width="100%" height="100%"></object>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </section>
 {% endblock section %}

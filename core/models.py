@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
+from radiogrid import RadioGridField
 
 
 class UserManager(BaseUserManager):
@@ -12,7 +13,22 @@ class UserManager(BaseUserManager):
         return user
 
 
+class Unidade(models.Model):
+    nome = models.CharField('Nome', max_length=50)
+    cnes = models.CharField('CNES', max_length=7)
+
+    class Meta:
+        verbose_name = 'Unidade'
+        verbose_name_plural = 'Unidades'
+
+    def __str__(self):
+        return '{} - {}'.format(self.cnes, self.nome)
+
+
 class Equipe(models.Model):
+    unidade = models.ForeignKey(
+        'Unidade', on_delete=models.CASCADE, verbose_name='Unidade'
+    )
     nome = models.CharField('Nome', max_length=50)
     ine = models.CharField('INE', max_length=10)
     area = models.PositiveIntegerField('Área')
@@ -22,7 +38,7 @@ class Equipe(models.Model):
         verbose_name_plural = 'Equipes'
 
     def __str__(self):
-        return '{} - {}'.format(self.area, self.nome)
+        return '{:04d} - {}'.format(self.area, self.nome)
 
 
 class Odontologo(AbstractBaseUser):
@@ -113,7 +129,7 @@ class Marcacao(models.Model):
         ordering = ['data']
 
     def __str__(self):
-        return '{} - {}'.format(self.user.cns, self.user.nome)
+        return '{} - {} - {}'.format(self.data, self.user.cns, self.user.nome)
 
 
 class Motivo(models.Model):

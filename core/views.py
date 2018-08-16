@@ -73,7 +73,10 @@ def marcacao(request, ano, mes, dia):
                         post.user.acs.nome
                     )})
             post.save()
-            return render(request, 'core/realizada.html', {'data': data})
+            return render(request, 'core/realizada.html', {
+                'id': post.id,
+                'data': data
+                })
     else:
         form = forms.MarcacaoForm
     return render(request, 'core/marcacao.html', {'form': form, 'data': data})
@@ -142,7 +145,7 @@ def calendario(request):
 @login_required(login_url='auth.login')
 def consultas(request):
     user = request.user
-    listed = models.Marcacao.objects.filter(user=user).reverse()
+    listed = models.Marcacao.objects.filter(user=user).order_by('-data')
     return render(
         request, 'core/consultas.html', {
             'consultas': listed
@@ -151,7 +154,9 @@ def consultas(request):
 
 
 @login_required(login_url='auth.login')
-def requisicao(request):
+def requisicao(request, id):
+    user = request.user
+    req = models.Marcacao.objects.get(id=id)
     margin = 2*cm
     x, y = A4
     response = HttpResponse(content_type='application/pdf')
@@ -187,6 +192,25 @@ def requisicao(request):
     )
     pdf.drawString(
         margin, y-margin-7*cm, 'Logradouro:'
+    )
+    pdf.setFont('Times-Roman', 14)
+    pdf.drawString(
+        margin+3*cm, y-margin-2*cm, '{}'.format(req.user.acs.equipe.unidade)
+    )
+    pdf.drawString(
+        margin+3*cm, y-margin-3*cm, '{}'.format(req.user.acs.equipe)
+    )
+    pdf.drawString(
+        margin+3*cm, y-margin-4*cm, '{}'.format(req.data.strftime('%d/%m/%Y'))
+    )
+    pdf.drawString(
+        margin+3*cm, y-margin-5*cm, user.cns
+    )
+    pdf.drawString(
+        margin+3*cm, y-margin-6*cm, user.nome
+    )
+    pdf.drawString(
+        margin+3*cm, y-margin-7*cm, user.endereco
     )
     pdf.showPage()
     pdf.save()
