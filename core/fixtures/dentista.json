@@ -6,43 +6,43 @@
             "cns": "980016282304682",
             "nome": "GLAUBERT OLIVEIRA SANTOS",
             "equipe": "0002",
-            "password": "980016282304682",
+            "password": "pbkdf2_sha256$100000$iF0Qw0OJtKvF$jR5yNdr8+r/R0a3nGIt+we8Ku+nHMwteGvCUBpm5KqA=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
     },
     {
         "model": "core.Odontologo",
-        "pk": 2,
+        "pk": 9,
         "fields": {
             "cns": "708704101790799",
             "nome": "ELAINE ALVES MIRANDA",
             "equipe": "0004",
-            "password": "708704101790799",
+            "password": "pbkdf2_sha256$100000$vh9qmNrL3WXi$TNf1ww5ysqROwHW2CNeGDFHkLVTJTFzK9j8M0DNzrA4=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
     },
     {
         "model": "core.Odontologo",
-        "pk": 3,
+        "pk": 18,
         "fields": {
             "cns": "980016001695488",
             "nome": "LUIZA FONTES DE OLIVEIRA",
             "equipe": "0001",
-            "password": "980016001695488",
+            "password": "pbkdf2_sha256$100000$SGJ3kkiTz9VG$MvNL4zV8vxjFY/S2C0iYd7UyLY6EawjQB1BRAa+xyac=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
     },
     {
         "model": "core.Odontologo",
-        "pk": 4,
+        "pk": 29,
         "fields": {
             "cns": "705208432073176",
             "nome": "CRISNANDA EMILLI FREITAS DOS SANTOS COSTA",
             "equipe": "0005",
-            "password": "705208432073176",
+            "password": "pbkdf2_sha256$100000$pnbjHHYCLoDe$/ES9Nxw0N3quaBpSruiMQwpRos1mp6spOrmzLeooiKQ=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
