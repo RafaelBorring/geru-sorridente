@@ -64,7 +64,7 @@ def marcacao(request, ano, mes, dia):
                         date.fromordinal(last_date).strftime('%d/%m/%Y'),
                         date.fromordinal(last_date + 16).strftime('%d/%m/%Y')
                     )})
-            elif post.user.locked:
+            elif post.user.is_active:
                 return render(request, 'core/marcacao.html', {
                     'form': form, 'data': data,
                     'message': '''

@@ -7,7 +7,6 @@
             "nome": "ADRIANA VALENCA DA SILVA",
             "equipe": "0002",
             "micro": "03",
-            "password": "pbkdf2_sha256$100000$poR5V6pbCD9N$IXqBPPB+tIE08TvEGE/w1m9rsUK4ufKL1NCI32+uIQU=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -20,7 +19,6 @@
             "nome": "JOEL SOARES REIS",
             "equipe": "0002",
             "micro": "02",
-            "password": "pbkdf2_sha256$100000$oiwjripy6d0U$iA41klVT/fE8FhVcKpB73c4NnviFw0Q/CR/2s3pFFyc=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -33,7 +31,6 @@
             "nome": "LUCIANA GUIMARAES DOS SANTOS",
             "equipe": "0002",
             "micro": "05",
-            "password": "pbkdf2_sha256$100000$d4V9H9ZjRUHs$mc1sKp6uVymppXo1C1EKFfJEbasv3NiLDR4YdHIXukc=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -46,7 +43,6 @@
             "nome": "ERIKA SANTOS MATOS",
             "equipe": "0002",
             "micro": "01",
-            "password": "pbkdf2_sha256$100000$DlgQnz7XacXr$aXSiHHN3+uWafk+/3NvGEMpCy2qh6OLV+Fr6TFcGmKM=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -59,7 +55,6 @@
             "nome": "CLEIDIANA DOS SANTOS MATOS",
             "equipe": "0002",
             "micro": "04",
-            "password": "pbkdf2_sha256$100000$IHWklV3OglgE$J2FiqzLc7QQINmu5GfgT+0AiwGfmVsI6Ri3kxgPlRSM=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -72,7 +67,6 @@
             "nome": "MARIA ALTANIRA DE JESUS",
             "equipe": "0002",
             "micro": "06",
-            "password": "pbkdf2_sha256$100000$6yL5qaxV1D7w$yfaWQIAZJMNPj2IwgCTR9P1BYLUJR6dsgJAIm4GCSPg=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -85,7 +79,6 @@
             "nome": "ANA PAULA SANTOS GUIMARAES",
             "equipe": "0004",
             "micro": "05",
-            "password": "pbkdf2_sha256$100000$W1jZZhpWGMcV$Dsm6RoO4PAgGns0raxp88rnO1Kq1fBv8Q0M/sVXqlfE=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -98,7 +91,6 @@
             "nome": "ADELMA NASCIMENTO SANTOS",
             "equipe": "0004",
             "micro": "02",
-            "password": "pbkdf2_sha256$100000$0cXHkNqTjehL$513S1q+2QIyhGNATkPD4GFQbhkOQJEzT3tuAftAp2mo=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -111,7 +103,6 @@
             "nome": "ALINE DA CONCEICAO REIS",
             "equipe": "0004",
             "micro": "03",
-            "password": "pbkdf2_sha256$100000$NGESeQi8FCuU$KMOqctbyE0Q7nTldgjL69VNqcfB+sL2csgPGfB1DOwo=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -124,7 +115,6 @@
             "nome": "EDNA DOMINGOS FELIX",
             "equipe": "0004",
             "micro": "01",
-            "password": "pbkdf2_sha256$100000$f21sEn6Seiju$YShe27BhZJ52y7QaHjdhV6KkBFvsgwAW3C2lRvgMW4Y=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -137,7 +127,6 @@
             "nome": "GICELIA MARIA DE JESUS",
             "equipe": "0004",
             "micro": "04",
-            "password": "pbkdf2_sha256$100000$uBSLt9U5dy5d$MVIyWrMBHavADFqEb6c9dNbwCr3p5LLFruHJIaB98tY=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -150,7 +139,6 @@
             "nome": "CLEIDILENE SILVA DE ARAUJO",
             "equipe": "0001",
             "micro": "07",
-            "password": "pbkdf2_sha256$100000$X77e0zXdSOev$ZDEAbX7o/fVQw8dX+Og2pdhQK7pam9ku5pp/aGpYAT8=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -163,7 +151,6 @@
             "nome": "JOSIELMA DINIZ NASCIMENTO DOS SANTOS",
             "equipe": "0001",
             "micro": "06",
-            "password": "pbkdf2_sha256$100000$3s1boKRsouI7$m729JMtfeevdKhjbEE7QWBFX+112zbubxQdXYCGKtg0=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -176,7 +163,6 @@
             "nome": "ALIANE MACIEL",
             "equipe": "0001",
             "micro": "05",
-            "password": "pbkdf2_sha256$100000$C6q87PjXmaNN$9Y3TD9ahTq/xphOjEdgmGc5ouACKO9vO/8ZyFQehvT4=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -189,7 +175,6 @@
             "nome": "MARIA DAS GRACAS SILVA REIS",
             "equipe": "0001",
             "micro": "02",
-            "password": "pbkdf2_sha256$100000$WrzqUjtVXIRZ$FBJ82EzPj3WPBz1jxsWiYBySn/srzc8RYZqdekQ99SU=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -202,7 +187,6 @@
             "nome": "JOELMA DE JESUS SILVA",
             "equipe": "0001",
             "micro": "03",
-            "password": "pbkdf2_sha256$100000$nS6CFkFHrt7f$h6K0PMh87LqZC0pgnxiijT6zNZZqdw8ERtY/j6+tpQ4=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -215,7 +199,6 @@
             "nome": "GABRIELA MARQUES DE SANTANA",
             "equipe": "0001",
             "micro": "04",
-            "password": "pbkdf2_sha256$100000$V8o9tejyINou$74Th4qgC1SWedw+1BrDrFGgqCN2JKIAcG+hpCcgaS0Q=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -228,7 +211,6 @@
             "nome": "FABRICIO DE OLIVEIRA SANTIAGO",
             "equipe": "0001",
             "micro": "01",
-            "password": "pbkdf2_sha256$100000$QFGbIdUTuYG7$toFMZcsRT42Abjbp/yBiUG3t63M8WwfhsAFo/+Hs2kg=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -241,7 +223,6 @@
             "nome": "LESSANDRO DE JESUS SANTOS",
             "equipe": "0003",
             "micro": "05",
-            "password": "pbkdf2_sha256$100000$kqt76BaWzymg$TyDHQR8LrQxs6BEZSZCQPBZAwWQSOmH49MIGlGc0HmE=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -254,7 +235,6 @@
             "nome": "EVERALDA DE MATOS SILVA",
             "equipe": "0003",
             "micro": "03",
-            "password": "pbkdf2_sha256$100000$C52CUr48hees$qf8kg0yH9++BoG8SXz3+SrlYZ+Izld1QtsTe7o9GsbY=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -267,7 +247,6 @@
             "nome": "JOSEANE DINIZ FREITAS",
             "equipe": "0003",
             "micro": "06",
-            "password": "pbkdf2_sha256$100000$aGe9VP6GKyu0$/PQCNbE/Z2IcT5/zxSjj7bmQ1z7oNC+RsCDi0myg094=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -280,7 +259,6 @@
             "nome": "RUBENS SANTOS DA SILVA",
             "equipe": "0003",
             "micro": "04",
-            "password": "pbkdf2_sha256$100000$CWxAHhBAVnis$2hxYHxCShzk1wRwtmDZkEBdQUjf8iTddi+MghfoeKYc=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -293,7 +271,6 @@
             "nome": "DANUZA VIANA DOS SANTOS",
             "equipe": "0003",
             "micro": "01",
-            "password": "pbkdf2_sha256$100000$MR7zye7dfOeX$w2GRbIJPA5yi5XWQpqm78BJ0oorHg0WZCv6RWnBmJ9o=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -306,7 +283,6 @@
             "nome": "ANA RUTE DOS SANTOS NASCIMENTO",
             "equipe": "0003",
             "micro": "02",
-            "password": "pbkdf2_sha256$100000$AEQ2EoCi4V78$LoCUiEo23JqIMXA6MipHlSrCn69zHv6WMPyzijLot2w=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -319,7 +295,6 @@
             "nome": "ALDERINDA DE JESUS SANTOS",
             "equipe": "0005",
             "micro": "06",
-            "password": "pbkdf2_sha256$100000$fv9agDArSQ1I$OCvUjKtPKiBlAvgqbmJVvPcdNvRrZs58xX+MqI/Yhiw=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -332,7 +307,6 @@
             "nome": "MARCIO GUIMARAES DE SANTANA",
             "equipe": "0005",
             "micro": "02",
-            "password": "pbkdf2_sha256$100000$ukx0fIv4Rk7D$YSg6dctddNCB7PQBJACqgfB7CHk9xOvGwsCqoH8W2Gg=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -345,7 +319,6 @@
             "nome": "ABELMIRA CARVALHO CEU",
             "equipe": "0005",
             "micro": "03",
-            "password": "pbkdf2_sha256$100000$CdHcTJjEKVJN$l1rvgZMP2lcGWfoiMPjQ+nCd9uWai0KPOe4DB/RqAiM=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -358,7 +331,6 @@
             "nome": "JOZENEIDE BIANCA LEAL TEIXEIRA",
             "equipe": "0005",
             "micro": "01",
-            "password": "pbkdf2_sha256$100000$P77ymZrQJNXF$hCBNGvBWEjxcWVR0P+3PW7SPiLhTPoDXpzODoThs8rU=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -371,7 +343,6 @@
             "nome": "DOMINGOS DE OLIVEIRA GUIMARAES",
             "equipe": "0005",
             "micro": "04",
-            "password": "pbkdf2_sha256$100000$IF0ue9xB69ZB$g6Xhx5Ut+2NY1Y5mBTK2RM4j7ViI+vJ9iH1g7eZg0ek=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
@@ -384,7 +355,6 @@
             "nome": "MARIA DA HORA SANTOS OLIVEIRA",
             "equipe": "0005",
             "micro": "05",
-            "password": "pbkdf2_sha256$100000$yCFX7rMBcuEo$TYFJvgm3UfMchAAVxLB36dE5WWYGV+Fo1t35io5sOWk=",
             "create_on": "2018-01-01",
             "update_on": "2018-01-01"
         }
