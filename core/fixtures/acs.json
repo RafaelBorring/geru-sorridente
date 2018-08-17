@@ -1,0 +1,392 @@
+[
+    {
+        "model": "core.ACS",
+        "pk": 1,
+        "fields": {
+            "cns": "980016277442622",
+            "nome": "ADRIANA VALENCA DA SILVA",
+            "equipe": "0002",
+            "micro": "03",
+            "password": "980016277442622",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 2,
+        "fields": {
+            "cns": "980016277442738",
+            "nome": "JOEL SOARES REIS",
+            "equipe": "0002",
+            "micro": "02",
+            "password": "980016277442738",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 3,
+        "fields": {
+            "cns": "980016277442843",
+            "nome": "LUCIANA GUIMARAES DOS SANTOS",
+            "equipe": "0002",
+            "micro": "05",
+            "password": "980016277442843",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 4,
+        "fields": {
+            "cns": "980016288359144",
+            "nome": "ERIKA SANTOS MATOS",
+            "equipe": "0002",
+            "micro": "01",
+            "password": "980016288359144",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 5,
+        "fields": {
+            "cns": "706709588368410",
+            "nome": "CLEIDIANA DOS SANTOS MATOS",
+            "equipe": "0002",
+            "micro": "04",
+            "password": "706709588368410",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 6,
+        "fields": {
+            "cns": "980016277443726",
+            "nome": "MARIA ALTANIRA DE JESUS",
+            "equipe": "0002",
+            "micro": "06",
+            "password": "980016277443726",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 7,
+        "fields": {
+            "cns": "980016277442568",
+            "nome": "ANA PAULA SANTOS GUIMARAES",
+            "equipe": "0004",
+            "micro": "05",
+            "password": "980016277442568",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 8,
+        "fields": {
+            "cns": "980016277442819",
+            "nome": "ADELMA NASCIMENTO SANTOS",
+            "equipe": "0004",
+            "micro": "02",
+            "password": "980016277442819",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 9,
+        "fields": {
+            "cns": "980016277442886",
+            "nome": "ALINE DA CONCEICAO REIS",
+            "equipe": "0004",
+            "micro": "03",
+            "password": "980016277442886",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 10,
+        "fields": {
+            "cns": "980016282652974",
+            "nome": "EDNA DOMINGOS FELIX",
+            "equipe": "0004",
+            "micro": "01",
+            "password": "980016282652974",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 11,
+        "fields": {
+            "cns": "124496132520007",
+            "nome": "GICELIA MARIA DE JESUS",
+            "equipe": "0004",
+            "micro": "04",
+            "password": "124496132520007",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 12,
+        "fields": {
+            "cns": "201563811030007",
+            "nome": "CLEIDILENE SILVA DE ARAUJO",
+            "equipe": "0001",
+            "micro": "07",
+            "password": "201563811030007",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 13,
+        "fields": {
+            "cns": "980016277442517",
+            "nome": "JOSIELMA DINIZ NASCIMENTO DOS SANTOS",
+            "equipe": "0001",
+            "micro": "06",
+            "password": "980016277442517",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 14,
+        "fields": {
+            "cns": "980016281045039",
+            "nome": "ALIANE MACIEL",
+            "equipe": "0001",
+            "micro": "05",
+            "password": "980016281045039",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 15,
+        "fields": {
+            "cns": "980016288412363",
+            "nome": "MARIA DAS GRACAS SILVA REIS",
+            "equipe": "0001",
+            "micro": "02",
+            "password": "980016288412363",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 16,
+        "fields": {
+            "cns": "980016277442908",
+            "nome": "JOELMA DE JESUS SILVA",
+            "equipe": "0001",
+            "micro": "03",
+            "password": "980016277442908",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 17,
+        "fields": {
+            "cns": "980016277442916",
+            "nome": "GABRIELA MARQUES DE SANTANA",
+            "equipe": "0001",
+            "micro": "04",
+            "password": "980016277442916",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 18,
+        "fields": {
+            "cns": "980016277712808",
+            "nome": "FABRICIO DE OLIVEIRA SANTIAGO",
+            "equipe": "0001",
+            "micro": "01",
+            "password": "980016277712808",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 19,
+        "fields": {
+            "cns": "980016277442193",
+            "nome": "LESSANDRO DE JESUS SANTOS",
+            "equipe": "0003",
+            "micro": "05",
+            "password": "980016277442193",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 20,
+        "fields": {
+            "cns": "980016277442215",
+            "nome": "EVERALDA DE MATOS SILVA",
+            "equipe": "0003",
+            "micro": "03",
+            "password": "980016277442215",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 21,
+        "fields": {
+            "cns": "980016281045012",
+            "nome": "JOSEANE DINIZ FREITAS",
+            "equipe": "0003",
+            "micro": "06",
+            "password": "980016281045012",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 22,
+        "fields": {
+            "cns": "980016277442681",
+            "nome": "RUBENS SANTOS DA SILVA",
+            "equipe": "0003",
+            "micro": "04",
+            "password": "980016277442681",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 23,
+        "fields": {
+            "cns": "980016282586505",
+            "nome": "DANUZA VIANA DOS SANTOS",
+            "equipe": "0003",
+            "micro": "01",
+            "password": "980016282586505",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 24,
+        "fields": {
+            "cns": "708605591490985",
+            "nome": "ANA RUTE DOS SANTOS NASCIMENTO",
+            "equipe": "0003",
+            "micro": "02",
+            "password": "708605591490985",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 25,
+        "fields": {
+            "cns": "170520419500009",
+            "nome": "ALDERINDA DE JESUS SANTOS",
+            "equipe": "0005",
+            "micro": "06",
+            "password": "170520419500009",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 26,
+        "fields": {
+            "cns": "980016277442363",
+            "nome": "MARCIO GUIMARAES DE SANTANA",
+            "equipe": "0005",
+            "micro": "02",
+            "password": "980016277442363",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 27,
+        "fields": {
+            "cns": "201563810060018",
+            "nome": "ABELMIRA CARVALHO CEU",
+            "equipe": "0005",
+            "micro": "03",
+            "password": "201563810060018",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 28,
+        "fields": {
+            "cns": "980016277442754",
+            "nome": "JOZENEIDE BIANCA LEAL TEIXEIRA",
+            "equipe": "0005",
+            "micro": "01",
+            "password": "980016277442754",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 29,
+        "fields": {
+            "cns": "705606401541113",
+            "nome": "DOMINGOS DE OLIVEIRA GUIMARAES",
+            "equipe": "0005",
+            "micro": "04",
+            "password": "705606401541113",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.ACS",
+        "pk": 30,
+        "fields": {
+            "cns": "980016288356781",
+            "nome": "MARIA DA HORA SANTOS OLIVEIRA",
+            "equipe": "0005",
+            "micro": "05",
+            "password": "980016288356781",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    }
+]

@@ -57,6 +57,7 @@ class Odontologo(AbstractBaseUser):
         'Equipe', on_delete=models.CASCADE, verbose_name='Equipe'
     )
     tipo = models.PositiveIntegerField('Tipo de Acesso', default=1)
+    is_staff = models.BooleanField('Acesso Admin', default=False)
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
@@ -79,6 +80,7 @@ class ACS(AbstractBaseUser):
     )
     micro = models.PositiveIntegerField('Micro')
     tipo = models.PositiveIntegerField('Tipo de Acesso', default=2)
+    is_staff = models.BooleanField('Acesso Admin', default=False)
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
@@ -104,6 +106,7 @@ class Usuario(AbstractBaseUser):
     )
     locked = models.BooleanField('Bloqueado', default=False)
     tipo = models.PositiveIntegerField('Tipo de Acesso', default=3)
+    is_staff = models.BooleanField('Acesso Admin', default=False)
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
@@ -168,4 +171,5 @@ class Agenda(models.Model):
     dia = models.CharField(
         'Dias da Semana', max_length=2, choices=DIA_SEMANA
     )
+    vaga = models.PositiveIntegerField('Quantidade de Vagas por ACS')
     tempo = models.PositiveIntegerField('Tempo Médio da Consulta', default=20)

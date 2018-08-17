@@ -1,0 +1,50 @@
+[
+    {
+        "model": "core.Odontologo",
+        "pk": 1,
+        "fields": {
+            "cns": "980016282304682",
+            "nome": "GLAUBERT OLIVEIRA SANTOS",
+            "equipe": "0002",
+            "password": "980016282304682",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.Odontologo",
+        "pk": 2,
+        "fields": {
+            "cns": "708704101790799",
+            "nome": "ELAINE ALVES MIRANDA",
+            "equipe": "0004",
+            "password": "708704101790799",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.Odontologo",
+        "pk": 3,
+        "fields": {
+            "cns": "980016001695488",
+            "nome": "LUIZA FONTES DE OLIVEIRA",
+            "equipe": "0001",
+            "password": "980016001695488",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    },
+    {
+        "model": "core.Odontologo",
+        "pk": 4,
+        "fields": {
+            "cns": "705208432073176",
+            "nome": "CRISNANDA EMILLI FREITAS DOS SANTOS COSTA",
+            "equipe": "0005",
+            "password": "705208432073176",
+            "create_on": "2018-01-01",
+            "update_on": "2018-01-01"
+        }
+    }
+]

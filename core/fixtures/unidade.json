@@ -1,0 +1,34 @@
+[
+    {
+        "model": "core.Unidade",
+        "pk": 1,
+        "fields": {
+            "nome": "UNIDADE BASICA DE SAUDE PEDRO GOIS",
+            "cnes": "2420422"
+        }
+    },
+    {
+        "model": "core.Unidade",
+        "pk": 2,
+        "fields": {
+            "nome": "UNIDADE BASICA DE SAUDE JOAO VELAMES DE OLIVEIRA",
+            "cnes": "2420457"
+        }
+    },
+    {
+        "model": "core.Unidade",
+        "pk": 3,
+        "fields": {
+            "nome": "UNIDADE BASICA DE SAUDE CHICO CONRADO",
+            "cnes": "3997049"
+        }
+    },
+    {
+        "model": "core.Unidade",
+        "pk": 4,
+        "fields": {
+            "nome": "CLINICA SAUDE DA FAMILIA MARCELO SOARES DA FONSECA",
+            "cnes": "2420449"
+        }
+    }
+]
