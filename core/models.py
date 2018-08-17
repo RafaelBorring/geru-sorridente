@@ -13,8 +13,6 @@ class UserManager(BaseUserManager):
         password = kwargs['password']
         kwargs.pop('password')
         user = self.model(**kwargs)
-        user.is_staff = False
-        user.is_active = True
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -59,6 +57,8 @@ class Odontologo(AbstractBaseUser):
         'Equipe', on_delete=models.CASCADE, verbose_name='Equipe'
     )
     tipo = models.PositiveIntegerField('Tipo de Acesso', default=1)
+    is_active = models.BooleanField('Ativo', default=True)
+    is_staff = models.BooleanField('Acesso ao Admin', default=False)
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
@@ -81,6 +81,8 @@ class ACS(AbstractBaseUser):
     )
     micro = models.PositiveIntegerField('Micro')
     tipo = models.PositiveIntegerField('Tipo de Acesso', default=2)
+    is_active = models.BooleanField('Ativo', default=True)
+    is_staff = models.BooleanField('Acesso ao Admin', default=False)
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
@@ -105,6 +107,8 @@ class Usuario(AbstractBaseUser):
         'ACS', on_delete=models.CASCADE, verbose_name='ACS'
     )
     tipo = models.PositiveIntegerField('Tipo de Acesso', default=3)
+    is_active = models.BooleanField('Ativo', default=True)
+    is_staff = models.BooleanField('Acesso ao Admin', default=False)
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
