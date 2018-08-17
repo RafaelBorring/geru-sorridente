@@ -36,3 +36,12 @@ class MarcacaoForm(forms.ModelForm):
             'motivo': forms.RadioSelect,
             'protese': forms.RadioSelect
         }
+
+
+class AgendaForm(forms.ModelForm):
+    class Meta:
+        model = models.Agenda
+        fields = ['mes', 'ano', 'dia', 'vaga', 'tempo']
+        widgets = {
+            'dia': forms.SelectMultiple,
+        }

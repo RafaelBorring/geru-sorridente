@@ -1,11 +1,12 @@
-from calendar import day_name, different_locale
+from calendar import day_name, different_locale, month_name
 from datetime import date
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
 with different_locale('pt_BR.UTF-8'):
-    DIA_SEMANA = tuple((range(7), x.title()) for x in day_name)
+    DIA_SEMANA = tuple((y, x.title()) for y in range(7) for x in day_name)
+    MES_DO_ANO = tuple((y, x.title()) for y in range(12) for x in month_name)
 
 
 class UserManager(BaseUserManager):
@@ -165,13 +166,17 @@ class Motivo(models.Model):
 class Agenda(models.Model):
     mes = models.CharField(
         'Mês de Referência', max_length=2,
-        default='{:02d}'.format(date.today().month+1)
+        choices=MES_DO_ANO,
+        default=False
     )
     ano = models.CharField(
         'Ano de Referência', max_length=4, default=date.today().year
     )
     dia = models.CharField(
-        'Dias da Semana', max_length=2, choices=DIA_SEMANA
+        'Dias da Semana', max_length=2, choices=DIA_SEMANA, default=False
     )
     vaga = models.PositiveIntegerField('Quantidade de Vagas por ACS')
     tempo = models.PositiveIntegerField('Tempo Médio da Consulta', default=20)
+    equipe = models.ForeignKey(
+        'Equipe', on_delete=models.CASCADE, verbose_name='Equipe'
+    )

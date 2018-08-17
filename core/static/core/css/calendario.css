@@ -28,3 +28,7 @@ h5 {
     min-width: 10%;
     min-height: 10%
 }
+
+.modal-body {
+    height: calc(100vh - 200px)
+}

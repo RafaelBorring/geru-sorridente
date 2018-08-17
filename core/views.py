@@ -1,11 +1,11 @@
 from calendar import LocaleHTMLCalendar, different_locale, month_name
 from datetime import date
 from io import BytesIO
-from django.urls import reverse
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
@@ -248,7 +248,7 @@ def requisicao(request, id):
     pdf.drawString(
         margin, y-margin-7*cm, 'Logradouro:'
     )
-    pdf.setFont('Times-Roman', 14)
+    pdf.setFont('Times-Roman', 10)
     pdf.drawString(
         margin+3*cm, y-margin-2*cm, '{}'.format(req.user.acs.equipe.unidade)
     )
@@ -295,7 +295,7 @@ def lista(request, ano, mes, dia):
     pdf.drawString(margin+4.5*cm, top-margin, 'NOME')
     pdf.drawString(x-margin-5*cm, top-margin, 'MOTIVO')
     pdf.drawString(x-margin-cm, top-margin, 'PRÓTESE')
-    pdf.setFont('Times-Roman', 12)
+    pdf.setFont('Times-Roman', 10)
     for m in listed:
         top -= cm
         pdf.drawString(margin, top-margin, '{}'.format(m.user.cns))
@@ -311,3 +311,21 @@ def lista(request, ano, mes, dia):
     tmp_pdf.close()
     if user.tipo == 1:
         return response
+
+
+@login_required(login_url='auth.login')
+def agenda(request):
+    user = request.user
+    if user.tipo == 1:
+        if request.method == "POST":
+            form = forms.AgendaForm(request.POST)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.equipe = user.equipe
+                post.save()
+                return render(request, '#')
+        else:
+            form = forms.AgendaForm
+        return render(request, 'core/agenda.html', {'form': form})
+    else:
+        return render(request, 'core/index.html')

@@ -17,5 +17,8 @@ urlpatterns = [
     path(
         'lista/<int:ano>/<int:mes>/<int:dia>',
         views.lista, name='core.lista'
+    ),
+    path(
+        'agenda/', views.agenda, name='core.agenda'
     )
 ]
