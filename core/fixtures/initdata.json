@@ -1,0 +1,658 @@
+[
+{
+    "model": "core.unidade",
+    "pk": 1,
+    "fields": {
+        "nome": "UNIDADE BASICA DE SAUDE PEDRO GOIS",
+        "cnes": "2420422"
+    }
+},
+{
+    "model": "core.unidade",
+    "pk": 2,
+    "fields": {
+        "nome": "UNIDADE BASICA DE SAUDE JOAO VELAMES DE OLIVEIRA",
+        "cnes": "2420457"
+    }
+},
+{
+    "model": "core.unidade",
+    "pk": 3,
+    "fields": {
+        "nome": "UNIDADE BASICA DE SAUDE CHICO CONRADO",
+        "cnes": "3997049"
+    }
+},
+{
+    "model": "core.unidade",
+    "pk": 4,
+    "fields": {
+        "nome": "CLINICA SAUDE DA FAMILIA MARCELO SOARES DA FONSECA",
+        "cnes": "2420449"
+    }
+},
+{
+    "model": "core.equipe",
+    "pk": 1,
+    "fields": {
+        "unidade": 1,
+        "nome": "E. S. F. DO POVOADO LOPES",
+        "ine": "0000178675",
+        "area": 2
+    }
+},
+{
+    "model": "core.equipe",
+    "pk": 2,
+    "fields": {
+        "unidade": 2,
+        "nome": "E. S. F. DO POV. CAMPO GRANDE",
+        "ine": "0000178705",
+        "area": 3
+    }
+},
+{
+    "model": "core.equipe",
+    "pk": 3,
+    "fields": {
+        "unidade": 3,
+        "nome": "E. S. F. DO POV. TABULEIRO",
+        "ine": "0000178713",
+        "area": 5
+    }
+},
+{
+    "model": "core.equipe",
+    "pk": 4,
+    "fields": {
+        "unidade": 4,
+        "nome": "CLINICA MARCELO SOARES FONSECA",
+        "ine": "0000178683",
+        "area": 1
+    }
+},
+{
+    "model": "core.equipe",
+    "pk": 5,
+    "fields": {
+        "unidade": 4,
+        "nome": "CLINICA SAUDE DA FAMILIA",
+        "ine": "0000178691",
+        "area": 4
+    }
+},
+{
+    "model": "core.odontologo",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$o0I7IM4ATkwV$oG7H4O0qOR7xlk1vLA//RGETmRTjoK/jDwJHnwG2Cns=",
+        "last_login": "2018-08-17T18:06:45.307Z",
+        "cns": "980 0162 8230 4682",
+        "nome": "GLAUBERT OLIVEIRA SANTOS",
+        "equipe": 2,
+        "tipo": 1,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.odontologo",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$l09irCou0LnT$E+S34f+m1EkA44eYfzVIjwQ1uoRBCdkEe9S9SEyAU+g=",
+        "last_login": "2018-08-17T18:06:54.567Z",
+        "cns": "708 7041 0179 0799",
+        "nome": "ELAINE ALVES MIRANDA",
+        "equipe": 4,
+        "tipo": 1,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.odontologo",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$w3XD1NtXRtFt$NQLJ39lc+W2g4NwUmNrPczbhPXJOLZDc2PM2ZJdGYWY=",
+        "last_login": "2018-08-17T18:07:03.489Z",
+        "cns": "980 0160 0169 5488",
+        "nome": "LUIZA FONTES DE OLIVEIRA",
+        "equipe": 1,
+        "tipo": 1,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.odontologo",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$y72qaH2TTxa1$eJPuAC+g/ZqHuQfIEq/sGzSgm7O26oywU8aPAkrrdYE=",
+        "last_login": "2018-08-17T18:07:12.655Z",
+        "cns": "705 2084 3207 3176",
+        "nome": "CRISNANDA EMILLI FREITAS DOS SANTOS COSTA",
+        "equipe": 5,
+        "tipo": 1,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$BlZLY7n6DtoU$T6noTchjymmG5pT7F3VJamzwVeau8Pe72b4Zt3D/utY=",
+        "last_login": null,
+        "cns": "980 0162 7744 2622",
+        "nome": "ADRIANA VALENCA DA SILVA",
+        "equipe": 2,
+        "micro": 3,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$iZa8MzpjmIx4$GNv+Gn9V9sm/VbUFzY09TsJTTxa8+RDj7czBvyiRTXg=",
+        "last_login": null,
+        "cns": "980 0162 7744 2738",
+        "nome": "JOEL SOARES REIS",
+        "equipe": 2,
+        "micro": 2,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$C6LV8KGsN7Ew$EKnMnyXHeIh1qlHdmGiq+xhYb2DY0JHfkVoFCGCrrEA=",
+        "last_login": null,
+        "cns": "980 0162 7744 2843",
+        "nome": "LUCIANA GUIMARAES DOS SANTOS",
+        "equipe": 2,
+        "micro": 5,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$1XXFTz6014YJ$mAyYyeQ51HKv7fJvtFZPNShTa3ZMifig5s4Wi9ySOSM=",
+        "last_login": null,
+        "cns": "980 0162 8835 9144",
+        "nome": "ERIKA SANTOS MATOS",
+        "equipe": 2,
+        "micro": 1,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$gvxNwRq2qKuw$Iyu+nXrXU0C0tL1iobuqTgKMkyGCpaXeZsMJEEilezU=",
+        "last_login": null,
+        "cns": "706 7095 8836 8410",
+        "nome": "CLEIDIANA DOS SANTOS MATOS",
+        "equipe": 2,
+        "micro": 4,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$p3uZ7kKj8mkd$v23945p7w1XWtPkP1Uw8pY4JJjqlud6Sw+P8gK+viNo=",
+        "last_login": null,
+        "cns": "980 0162 7744 3726",
+        "nome": "MARIA ALTANIRA DE JESUS",
+        "equipe": 2,
+        "micro": 6,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$ru170BuSUU15$461tNybJu/u4tuRjt+QFsHID95g99upAYSKckq6/dCY=",
+        "last_login": null,
+        "cns": "980 0162 7744 2568",
+        "nome": "ANA PAULA SANTOS GUIMARAES",
+        "equipe": 4,
+        "micro": 5,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$iyFJTx9aaP2h$vxEFL5xv5EQSjonGCgS8iLs2Z17wsm+o0SyZwO7A2Ys=",
+        "last_login": null,
+        "cns": "980 0162 7744 2819",
+        "nome": "ADELMA NASCIMENTO SANTOS",
+        "equipe": 4,
+        "micro": 2,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 9,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$h0KoxdAB3Z64$GiXjA9/AWq8DT6bZ2fhZPtnQkCNXdpWuRg5DGXr6+vg=",
+        "last_login": null,
+        "cns": "980 0162 7744 2886",
+        "nome": "ALINE DA CONCEICAO REIS",
+        "equipe": 4,
+        "micro": 3,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 10,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$rtCwodO9ssvV$l9/tkCwSr9gqHXpvncPYFAr/EeB+5sxuCbLXw7JHYzw=",
+        "last_login": null,
+        "cns": "980 0162 8265 2974",
+        "nome": "EDNA DOMINGOS FELIX",
+        "equipe": 4,
+        "micro": 1,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 11,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$NpUojps9x8cn$vNAP8MMxIaWywuc6qbFz9y4969b/rpriVEUhdQaIbYA=",
+        "last_login": null,
+        "cns": "124 4961 3252 0007",
+        "nome": "GICELIA MARIA DE JESUS",
+        "equipe": 4,
+        "micro": 4,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 12,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$cInd2WM1FfZd$YxX/dy1FbysGyjk+fKGj6/XHiAlMIOaupb9maG46mJM=",
+        "last_login": null,
+        "cns": "201 5638 1103 0007",
+        "nome": "CLEIDILENE SILVA DE ARAUJO",
+        "equipe": 1,
+        "micro": 7,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 13,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$3rJjlAnAo55O$4KMFPrZcv+tyt16bcXo+Sake0WqW9ri1970M36ih9ZA=",
+        "last_login": null,
+        "cns": "980 0162 7744 2517",
+        "nome": "JOSIELMA DINIZ NASCIMENTO DOS SANTOS",
+        "equipe": 1,
+        "micro": 6,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 14,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$rwxBCCYDuEkW$5LHURjoORozPbZT6Y38udIK6Ejg/8gBV+N2xtYIYhFM=",
+        "last_login": null,
+        "cns": "980 0162 8104 5039",
+        "nome": "ALIANE MACIEL",
+        "equipe": 1,
+        "micro": 5,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 15,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$p25EzWWrLj0K$OzypfA/s/1ytbLczL3+JysKrC+tpkgetZjZ6jrEJF2w=",
+        "last_login": null,
+        "cns": "980 0162 8841 2363",
+        "nome": "MARIA DAS GRACAS SILVA REIS",
+        "equipe": 1,
+        "micro": 2,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 16,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$6qpirdmRJ6Yx$teG1dz27aeEDBFVrySy+/1IBLUfiVBnLOp7+mHBpe5w=",
+        "last_login": null,
+        "cns": "980 0162 7744 2908",
+        "nome": "JOELMA DE JESUS SILVA",
+        "equipe": 1,
+        "micro": 3,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 17,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$QKRuLt8gCKhg$5HHPlqiReB1kslTAg8EeIQvYlBPpI/DLAh416C2q6Ps=",
+        "last_login": null,
+        "cns": "980 0162 7744 2916",
+        "nome": "GABRIELA MARQUES DE SANTANA",
+        "equipe": 1,
+        "micro": 4,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 18,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$UYYrFef1GgP7$dpWARa/LumSiouMXg1xmKocDEv27HsLIs6V+TAFaYXk=",
+        "last_login": null,
+        "cns": "980 0162 7771 2808",
+        "nome": "FABRICIO DE OLIVEIRA SANTIAGO",
+        "equipe": 1,
+        "micro": 1,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 19,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$fgvU9i4CjKGI$EQZRs4Idw6E8mYxilJyh2gQULWy0LOxGUBYMM6zJRXI=",
+        "last_login": null,
+        "cns": "980 0162 7744 2193",
+        "nome": "LESSANDRO DE JESUS SANTOS",
+        "equipe": 3,
+        "micro": 5,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 20,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$11xHWZRcSqAg$govf63IK5DCYUgo/5RnjWp9+vuMU+jnLNwi6yaKvp/o=",
+        "last_login": null,
+        "cns": "980 0162 7744 2215",
+        "nome": "EVERALDA DE MATOS SILVA",
+        "equipe": 3,
+        "micro": 3,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 21,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$gyYRcYIBCc7W$xWziZLp44LuW6flJ09rnKWLS7robc8AL+a18DMNn3UA=",
+        "last_login": null,
+        "cns": "980 0162 8104 5012",
+        "nome": "JOSEANE DINIZ FREITAS",
+        "equipe": 3,
+        "micro": 6,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 22,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$dcJVTzPnAlaa$Wq0N0kFaAZo3z+Voy4zrpBiVd8ySPQSXulUxjKgSYHo=",
+        "last_login": null,
+        "cns": "980 0162 7744 2681",
+        "nome": "RUBENS SANTOS DA SILVA",
+        "equipe": 3,
+        "micro": 4,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 23,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$6GpY9wmyb786$Nt027uFzO5VITteOGSCra47DVkRoxUJ8ZFHxsiM4nB0=",
+        "last_login": null,
+        "cns": "980 0162 8258 6505",
+        "nome": "DANUZA VIANA DOS SANTOS",
+        "equipe": 3,
+        "micro": 1,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 24,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$6uJAy3Y7QpBP$fWf1XPsty1PWkH8oEAEN3ic0JWbIRicHL0cFOyjLiLM=",
+        "last_login": null,
+        "cns": "708 6055 9149 0985",
+        "nome": "ANA RUTE DOS SANTOS NASCIMENTO",
+        "equipe": 3,
+        "micro": 2,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 25,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$1cGtRxYvLTo4$NFPTeDus9rZD1lIZ76j7WOGQX08mxMauZ5Zn4cmmfKA=",
+        "last_login": null,
+        "cns": "170 5204 1950 0009",
+        "nome": "ALDERINDA DE JESUS SANTOS",
+        "equipe": 5,
+        "micro": 6,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 26,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$B5mtXnttCg97$6OvO2IgW8mcv7Zirch7QyCVIbi6obeE99M2kEwYJgms=",
+        "last_login": null,
+        "cns": "980 0162 7744 2363",
+        "nome": "MARCIO GUIMARAES DE SANTANA",
+        "equipe": 5,
+        "micro": 2,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 27,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$vpNN4Obrl8Sv$GjfpgmpEBeeXivBWpMjb/ML3r8xgW+NtLy5jSudtHAA=",
+        "last_login": null,
+        "cns": "201 5638 1006 0018",
+        "nome": "ABELMIRA CARVALHO CEU",
+        "equipe": 5,
+        "micro": 3,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 28,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$kumGm2V3fZ5e$5FuzV2FYZV894HmUDZZCBixzvPBbof+RGYaS3YNz51Y=",
+        "last_login": null,
+        "cns": "980 0162 7744 2754",
+        "nome": "JOZENEIDE BIANCA LEAL TEIXEIRA",
+        "equipe": 5,
+        "micro": 1,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 29,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$Ma14xK3EuSpv$oVpfKTr2iimIJOZMtqTCx3s7IvBkgXy9urzpfl48LEo=",
+        "last_login": null,
+        "cns": "705 6064 0154 1113",
+        "nome": "DOMINGOS DE OLIVEIRA GUIMARAES",
+        "equipe": 5,
+        "micro": 4,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+},
+{
+    "model": "core.acs",
+    "pk": 30,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$gVkXmL1haE60$a4mcd3Og8TTNnnAc1BlGUd3yRmh1AGAk67l7lA8dhDo=",
+        "last_login": null,
+        "cns": "980 0162 8835 6781",
+        "nome": "MARIA DA HORA SANTOS OLIVEIRA",
+        "equipe": 5,
+        "micro": 5,
+        "tipo": 2,
+        "is_active": true,
+        "is_staff": false,
+        "create_on": "2018-01-01",
+        "update_on": "2018-08-17"
+    }
+}
+]
