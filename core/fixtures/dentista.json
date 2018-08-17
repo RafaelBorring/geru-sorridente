@@ -12,7 +12,7 @@
     },
     {
         "model": "core.Odontologo",
-        "pk": 9,
+        "pk": 2,
         "fields": {
             "cns": "708704101790799",
             "nome": "ELAINE ALVES MIRANDA",
@@ -23,7 +23,7 @@
     },
     {
         "model": "core.Odontologo",
-        "pk": 18,
+        "pk": 3,
         "fields": {
             "cns": "980016001695488",
             "nome": "LUIZA FONTES DE OLIVEIRA",
@@ -34,7 +34,7 @@
     },
     {
         "model": "core.Odontologo",
-        "pk": 29,
+        "pk": 4,
         "fields": {
             "cns": "705208432073176",
             "nome": "CRISNANDA EMILLI FREITAS DOS SANTOS COSTA",
