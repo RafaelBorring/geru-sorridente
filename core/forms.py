@@ -1,5 +1,5 @@
 from re import match
-
+from calendar import day_name, different_locale, month_name
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
@@ -42,6 +42,10 @@ class AgendaForm(forms.ModelForm):
     class Meta:
         model = models.Agenda
         fields = ['mes', 'ano', 'dia', 'vaga', 'tempo']
-        widgets = {
-            'dia': forms.SelectMultiple,
-        }
+
+    with different_locale('pt_BR.UTF-8'):
+        MES_DO_ANO = tuple((str(list(month_name).index(x)), x.title()) for x in month_name)
+        DIA_SEMANA = tuple((str(list(day_name).index(x)), x.title()) for x in day_name)
+    mes = forms.ChoiceField(choices=MES_DO_ANO)
+    dia = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=DIA_SEMANA)
+
