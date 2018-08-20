@@ -1,3 +1,4 @@
+from calendar import different_locale, month_name
 from datetime import date
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
@@ -159,9 +160,9 @@ class Motivo(models.Model):
 
 
 class Agenda(models.Model):
-    mes = models.CharField('Mês de Referência', max_length=2)
-    ano = models.CharField(
-        'Ano de Referência', max_length=4, default=date.today().year
+    mes = models.PositiveIntegerField('Mês de Referência')
+    ano = models.PositiveIntegerField(
+        'Ano de Referência', default=date.today().year
     )
     dia = models.CharField('Dias da Semana', max_length=35)
     vaga = models.PositiveIntegerField('Quantidade de Vagas por ACS')
@@ -169,3 +170,12 @@ class Agenda(models.Model):
     equipe = models.ForeignKey(
         'Equipe', on_delete=models.CASCADE, verbose_name='Equipe'
     )
+
+    class Meta:
+        verbose_name = 'Agenda'
+        verbose_name_plural = 'Agendas'
+        ordering = ['mes', 'ano']
+
+    def __str__(self):
+        with different_locale('pt_BR.UTF-8'):
+            return '{} de {}'.format(month_name[self.mes].title(), self.ano)

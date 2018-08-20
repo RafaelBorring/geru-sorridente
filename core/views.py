@@ -101,7 +101,13 @@ class Calendario(LocaleHTMLCalendar):
         return super(Calendario, self).formatmonth(ano, mes)
 
     def formatday(self, dia, semana):
-        if dia == 0 or semana in [5, 6]:
+        try:
+            dias_marc = models.Agenda.objects.get(
+                ano=self.ano, mes=self.mes, equipe=self.equipe
+                )
+        except models.Agenda.DoesNotExist:
+            dias_marc = None
+        if dia == 0 or not dias_marc or str(semana) not in dias_marc.dia:
             return '<td class="noday">&nbsp;</td>'
         elif self.tipo == 1:
             consulta_id = '{}{}{}{}'.format(
@@ -146,33 +152,43 @@ class Calendario(LocaleHTMLCalendar):
         elif dia <= self.hoje:
             return '<td class="noday">&nbsp;</td>'
         elif self.tipo == 3:
-            vagas = 5 - models.Marcacao.objects.filter(
+            total_vagas = models.Agenda.objects.get(
+                ano=self.ano, mes=self.mes, equipe=self.equipe
+            )
+            vagas = total_vagas.vaga - models.Marcacao.objects.filter(
                 data='{}-{}-{}'.format(self.ano, self.mes, dia),
                 user__acs__equipe=self.equipe,
                 user__acs=self.micro).count()
             if vagas == 0:
-                return '<td class="{}">\
-                <a class="btn btn-danger" href="#">{:02d}</a>\
-                <h5>{} Vagas</h5>\
-                </td>'\
-                    .format(self.cssclasses[semana], dia, vagas)
-            if vagas > 1:
-                return '<td class="{}">\
-                <a class="btn btn-success"\
-                href="/marcacao/{}/{}/{}">{:02d}</a>\
-                <h5>{} Vagas</h5>\
-                </td>'\
-                    .format(
+                return '''
+                <td class="{}">
+                    <a class="btn btn-danger" href="#">
+                        {:02d}
+                    </a>
+                    <h5>{} Vagas</h5>
+                </td>
+                '''.format(self.cssclasses[semana], dia, vagas)
+            elif vagas > 1:
+                return '''
+                <td class="{}">
+                    <a class="btn btn-success" href="/marcacao/{}/{}/{}">
+                        {:02d}
+                    </a>
+                    <h5>{} Vagas</h5>
+                </td>
+                '''.format(
                     self.cssclasses[semana], self.ano, self.mes, dia, dia,
                     vagas
                 )
             else:
-                return '<td class="{}">\
-                <a class="btn btn-warning"\
-                href="/marcacao/{}/{}/{}">{:02d}</a>\
-                <h5>{} Vaga</h5>\
-                </td>'\
-                    .format(
+                return '''
+                <td class="{}">
+                    <a class="btn btn-warning" href="/marcacao/{}/{}/{}">
+                        {:02d}
+                    </a>
+                    <h5>{} Vaga</h5>
+                </td>
+                '''.format(
                     self.cssclasses[semana], self.ano, self.mes, dia, dia,
                     vagas
                 )
@@ -323,7 +339,7 @@ def agenda(request):
                 post = form.save(commit=False)
                 post.equipe = user.equipe
                 post.save()
-                return render(request, '#')
+                return render(request, 'core/criada.html')
         else:
             form = forms.AgendaForm
         return render(request, 'core/agenda.html', {'form': form})
