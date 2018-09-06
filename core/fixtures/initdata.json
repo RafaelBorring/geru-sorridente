@@ -33,7 +33,7 @@
 },
 {
     "model": "core.equipe",
-    "pk": 1,
+    "pk": 2,
     "fields": {
         "unidade": 1,
         "nome": "E. S. F. DO POVOADO LOPES",
@@ -43,7 +43,7 @@
 },
 {
     "model": "core.equipe",
-    "pk": 2,
+    "pk": 3,
     "fields": {
         "unidade": 2,
         "nome": "E. S. F. DO POV. CAMPO GRANDE",
@@ -53,7 +53,7 @@
 },
 {
     "model": "core.equipe",
-    "pk": 3,
+    "pk": 5,
     "fields": {
         "unidade": 3,
         "nome": "E. S. F. DO POV. TABULEIRO",
@@ -63,7 +63,7 @@
 },
 {
     "model": "core.equipe",
-    "pk": 4,
+    "pk": 1,
     "fields": {
         "unidade": 4,
         "nome": "CLINICA MARCELO SOARES FONSECA",
@@ -73,7 +73,7 @@
 },
 {
     "model": "core.equipe",
-    "pk": 5,
+    "pk": 4,
     "fields": {
         "unidade": 4,
         "nome": "CLINICA SAUDE DA FAMILIA",
