@@ -1,4 +1,4 @@
-from calendar import day_name, different_locale, month_name
+from calendar import TextCalendar, day_name, different_locale, month_name
 from re import match
 
 from django import forms
@@ -39,22 +39,34 @@ class MarcacaoForm(forms.ModelForm):
 
 
 class AgendaForm(forms.ModelForm):
+    class Meta:
+        model = models.Agenda
+        fields = ['mes', 'ano', 'dia', 'vaga', 'tempo']
+
     with different_locale('pt_BR.UTF-8'):
         MES_DO_ANO = tuple(
             (list(month_name).index(x), x.title()) for x in month_name
         )
-        DIA_SEMANA = tuple(
-            (list(day_name).index(x), x.title()) for x in day_name
-        )
     mes = forms.ChoiceField(choices=MES_DO_ANO, label='Mês de Referência')
     dia = forms.MultipleChoiceField(
-        widget=forms.CheckboxSelectMultiple, choices=DIA_SEMANA,
+        widget=forms.CheckboxSelectMultiple,
         label='Dias da Semana'
     )
 
-    class Meta:
-        model = models.Agenda
-        fields = ['mes', 'ano', 'dia', 'vaga', 'tempo']
+    def __init__(self, *args, **kwargs):
+        super(AgendaForm, self).__init__(*args, **kwargs)
+        vaga_dia = []
+        with different_locale('pt_BR.UTF-8'):
+            for semanas in TextCalendar().monthdatescalendar(2018, 9):
+                for dias in semanas:
+                    if dias.month == 9:
+                        vaga_dia.append((
+                            dias.day,
+                            '{:02d} - {}'.format(
+                                dias.day, day_name[dias.weekday()].title()
+                            )
+                        ))
+        self.fields['dia'].widget.choices = vaga_dia
 
     def clean(self):
         mes = self.cleaned_data['mes']
