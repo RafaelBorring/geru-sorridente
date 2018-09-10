@@ -22,6 +22,9 @@ urlpatterns = [
         'agenda_mes/', views.agenda_mes, name='core.agenda_mes'
     ),
     path(
+        'agenda_closed/', views.agenda_closed, name='core.agenda_closed'
+    ),
+    path(
         'agenda/<int:ano>/<int:mes>/', views.agenda, name='core.agenda'
     )
 ]

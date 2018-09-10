@@ -3,6 +3,7 @@ from datetime import date
 from io import BytesIO
 
 from django.contrib.auth.decorators import login_required
+from django.core.serializers import serialize
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -344,6 +345,21 @@ def lista(request, ano, mes, dia):
 def agenda_mes(request):
     now = date.today()
     return render(request, 'core/agenda_mes.html', {'ano': now.year})
+
+
+@login_required(login_url='auth.login')
+def agenda_closed(request):
+    user = request.user
+    now = date.today()
+    listed = models.Agenda.objects.filter(
+        equipe=user.equipe, ano=now.year
+    )
+    data = serialize('json', listed)
+    if user.tipo == 1:
+        return HttpResponse(data, content_type='application/json')
+    else:
+        return render(request, 'core/index.html')
+
 
 
 @login_required(login_url='auth.login')
