@@ -104,10 +104,10 @@ class Calendario(LocaleHTMLCalendar):
         try:
             dias_marc = models.Agenda.objects.get(
                 ano=self.ano, mes=self.mes, equipe=self.equipe
-                )
+            )
         except models.Agenda.DoesNotExist:
             dias_marc = None
-        if dia == 0 or not dias_marc or str(semana) not in dias_marc.dia:
+        if dia == 0 or not dias_marc:
             return '<td class="noday">&nbsp;</td>'
         elif self.tipo == 1:
             consulta_id = '{}{}{}{}'.format(
@@ -330,18 +330,30 @@ def lista(request, ano, mes, dia):
 
 
 @login_required(login_url='auth.login')
-def agenda(request):
+def agenda_mes(request):
+    now = date.today()
+    return render(request, 'core/agenda_mes.html', {'ano': now.year})
+
+
+@login_required(login_url='auth.login')
+def agenda(request, ano, mes):
+    with different_locale('pt_BR.UTF-8'):
+        nome_mes = month_name[mes].title()
     user = request.user
     if user.tipo == 1:
         if request.method == "POST":
-            form = forms.AgendaForm(request.POST)
+            form = forms.AgendaForm(request.POST, ano=ano, mes=mes)
             if form.is_valid():
                 post = form.save(commit=False)
+                post.ano = ano
+                post.mes = mes
                 post.equipe = user.equipe
                 post.save()
                 return render(request, 'core/criada.html')
         else:
-            form = forms.AgendaForm
-        return render(request, 'core/agenda.html', {'form': form})
+            form = forms.AgendaForm(ano=ano, mes=mes)
+        return render(request, 'core/agenda.html', {
+            'form': form, 'ano': ano, 'mes': nome_mes
+        })
     else:
         return render(request, 'core/index.html')

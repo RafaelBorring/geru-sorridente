@@ -9,16 +9,19 @@ urlpatterns = [
     path('', views.index, name='core.index'),
     path('calendario/', views.calendario, name='core.calendario'),
     path(
-        'marcacao/<int:ano>/<int:mes>/<int:dia>',
+        'marcacao/<int:ano>/<int:mes>/<int:dia>/',
         views.marcacao, name='core.marcacao'
     ),
     path('consultas/', views.consultas, name='core.consultas'),
     path('requisicao/<int:id>/', views.requisicao, name='core.requisicao'),
     path(
-        'lista/<int:ano>/<int:mes>/<int:dia>',
+        'lista/<int:ano>/<int:mes>/<int:dia>/',
         views.lista, name='core.lista'
     ),
     path(
-        'agenda/', views.agenda, name='core.agenda'
+        'agenda_mes/', views.agenda_mes, name='core.agenda_mes'
+    ),
+    path(
+        'agenda/<int:ano>/<int:mes>/', views.agenda, name='core.agenda'
     )
 ]

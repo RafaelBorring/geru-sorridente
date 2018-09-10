@@ -41,36 +41,29 @@ class MarcacaoForm(forms.ModelForm):
 class AgendaForm(forms.ModelForm):
     class Meta:
         model = models.Agenda
-        fields = ['mes', 'ano', 'dia', 'vaga', 'tempo']
-
-    with different_locale('pt_BR.UTF-8'):
-        MES_DO_ANO = tuple(
-            (list(month_name).index(x), x.title()) for x in month_name
-        )
-    mes = forms.ChoiceField(choices=MES_DO_ANO, label='Mês de Referência')
-    dia = forms.MultipleChoiceField(
-        widget=forms.CheckboxSelectMultiple,
-        label='Dias da Semana'
-    )
+        fields = ['dia', 'vaga', 'tempo']
 
     def __init__(self, *args, **kwargs):
+        self.ano = kwargs.pop('ano')
+        self.mes = kwargs.pop('mes')
         super(AgendaForm, self).__init__(*args, **kwargs)
         vaga_dia = []
         with different_locale('pt_BR.UTF-8'):
-            for semanas in TextCalendar().monthdatescalendar(2018, 9):
+            for semanas in TextCalendar().monthdatescalendar(
+                self.ano, self.mes
+            ):
                 for dias in semanas:
-                    if dias.month == 9:
+                    if dias.month == self.mes and dias.weekday() not in [5, 6]:
                         vaga_dia.append((
                             dias.day,
                             '{:02d} - {}'.format(
                                 dias.day, day_name[dias.weekday()].title()
                             )
                         ))
+        self.fields['dia'].widget = forms.CheckboxSelectMultiple()
         self.fields['dia'].widget.choices = vaga_dia
 
     def clean(self):
-        mes = self.cleaned_data['mes']
-        ano = self.cleaned_data['ano']
-        if models.Agenda.objects.filter(ano=ano, mes=mes):
+        if models.Agenda.objects.filter(ano=self.ano, mes=self.mes):
             raise forms.ValidationError('Já existe agenda nesse mês!')
         return self.cleaned_data

@@ -164,7 +164,7 @@ class Agenda(models.Model):
     ano = models.PositiveIntegerField(
         'Ano de Referência', default=date.today().year
     )
-    dia = models.CharField('Dias da Semana', max_length=35)
+    dia = models.CharField('Dias', max_length=180)
     vaga = models.PositiveIntegerField('Quantidade de Vagas por ACS')
     tempo = models.PositiveIntegerField('Tempo Médio da Consulta', default=20)
     equipe = models.ForeignKey(
