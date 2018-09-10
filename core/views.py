@@ -28,10 +28,19 @@ def index(request):
 
 @login_required(login_url='auth.login')
 def marcacao(request, ano, mes, dia):
+    user = request.user
     with different_locale('pt_BR.UTF-8'):
         dia_marcacao = date(ano, mes, dia)
         data = '{:02d} de {} de {}'.format(dia, month_name[mes], ano)
-    if dia_marcacao <= date.today() or dia_marcacao.weekday() in [5, 6]:
+    try:
+        dias_marc = models.Agenda.objects.get(
+            ano=ano, mes=mes, equipe=user.acs.equipe
+        )
+    except models.Agenda.DoesNotExist:
+        dias_marc = None
+    if dias_marc:
+        dias = [int(i) for i in dias_marc.dia.split("'") if i.isdigit()]
+    if dia_marcacao <= date.today() or not dias_marc or dia not in dias:
         return redirect('core.index')
     elif request.method == "POST":
         form = forms.MarcacaoForm(request.POST)
@@ -107,7 +116,9 @@ class Calendario(LocaleHTMLCalendar):
             )
         except models.Agenda.DoesNotExist:
             dias_marc = None
-        if dia == 0 or not dias_marc:
+        if dias_marc:
+            dias = [int(i) for i in dias_marc.dia.split("'") if i.isdigit()]
+        if dia == 0 or not dias_marc or dia not in dias:
             return '<td class="noday">&nbsp;</td>'
         elif self.tipo == 1:
             consulta_id = '{}{}{}{}'.format(
