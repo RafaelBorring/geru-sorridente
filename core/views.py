@@ -121,6 +121,8 @@ class Calendario(LocaleHTMLCalendar):
             dias = [int(i) for i in dias_marc.dia.split("'") if i.isdigit()]
         if dia == 0 or not dias_marc or dia not in dias:
             return '<td class="noday">&nbsp;</td>'
+        elif self.tipo == 1 and dia <= self.hoje:
+            return '<td class="noday">&nbsp;</td>'
         elif self.tipo == 1:
             consulta_id = '{}{}{}{}'.format(
                 self.equipe.area, self.ano, self.mes, dia
@@ -311,6 +313,11 @@ def lista(request, ano, mes, dia):
     margin = 2*cm
     x, y = A4
     response = HttpResponse(content_type='application/pdf')
+    with different_locale('pt_BR.UTF-8'):
+        filename = '{} - {:02d} de {} de {}'.format(
+            user.equipe, dia, month_name[mes].title(), ano
+        )
+    response['Content-Disposition'] = 'filename="{}"'.format(filename)
     tmp_pdf = BytesIO()
     pdf = Canvas(tmp_pdf, pagesize=A4)
     pdf.setFont('Times-Bold', 14)
@@ -339,6 +346,8 @@ def lista(request, ano, mes, dia):
     tmp_pdf.close()
     if user.tipo == 1:
         return response
+    else:
+        return render(request, 'core/index.html')
 
 
 @login_required(login_url='auth.login')
@@ -359,7 +368,6 @@ def agenda_closed(request):
         return HttpResponse(data, content_type='application/json')
     else:
         return render(request, 'core/index.html')
-
 
 
 @login_required(login_url='auth.login')
@@ -384,3 +392,23 @@ def agenda(request, ano, mes):
         })
     else:
         return render(request, 'core/index.html')
+
+
+@login_required(login_url='auth.login')
+def bloquear(request, ano, mes, dia):
+    user = request.user
+    data = '{}-{}-{}'.format(ano, mes, dia)
+    lista = models.Marcacao.objects.filter(
+        user__acs__equipe=user.equipe, data=data
+    )
+    if request.method == "POST":
+        for i in lista:
+            if request.POST.get('{}'.format(i.user)) == 'on':
+                usu_lock = models.Usuario.objects.get(pk=i.user.id)
+                usu_lock.is_active = False
+                usu_lock.save()
+        form = forms.BloquearForm(lista=lista)
+        return redirect('core.calendario')
+    else:
+        form = forms.BloquearForm(lista=lista)
+    return render(request, 'core/bloquear.html', {'form': form})

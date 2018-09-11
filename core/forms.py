@@ -67,3 +67,11 @@ class AgendaForm(forms.ModelForm):
         if models.Agenda.objects.filter(ano=self.ano, mes=self.mes):
             raise forms.ValidationError('Já existe agenda nesse mês!')
         return self.cleaned_data
+
+
+class BloquearForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        lista = kwargs.pop('lista')
+        super(BloquearForm, self).__init__(*args, **kwargs)
+        for i in lista:
+            self.fields['{}'.format(i.user)] = forms.BooleanField()

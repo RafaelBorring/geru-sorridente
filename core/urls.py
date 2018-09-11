@@ -26,5 +26,9 @@ urlpatterns = [
     ),
     path(
         'agenda/<int:ano>/<int:mes>/', views.agenda, name='core.agenda'
-    )
+    ),
+    path(
+        'bloquear/<int:ano>/<int:mes>/<int:dia>/',
+        views.bloquear, name='core.bloquear'
+    ),
 ]
