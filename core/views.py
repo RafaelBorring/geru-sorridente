@@ -122,7 +122,21 @@ class Calendario(LocaleHTMLCalendar):
         if dia == 0 or not dias_marc or dia not in dias:
             return '<td class="noday">&nbsp;</td>'
         elif self.tipo == 1 and dia <= self.hoje:
-            return '<td class="noday">&nbsp;</td>'
+            vagas = models.Marcacao.objects.filter(
+                data='{}-{}-{}'.format(self.ano, self.mes, dia),
+                user__acs__equipe=self.equipe,
+            ).count()
+            return '''
+                <td class="{}">
+                    <a class="btn btn-warning" href="/bloquear/{}/{}/{}">
+                        {:02d}
+                    </a>
+                    <h5>Total {}</h5>
+                </td>
+                '''.format(
+                    self.cssclasses[semana], self.ano, self.mes, dia, dia,
+                    vagas
+                )
         elif self.tipo == 1:
             consulta_id = '{}{}{}{}'.format(
                 self.equipe.area, self.ano, self.mes, dia
@@ -339,7 +353,6 @@ def lista(request, ano, mes, dia):
         pdf.drawString(
             x-margin-cm, top-margin, '{}'.format(m.get_protese_display())
         )
-        top -= cm
     pdf.showPage()
     pdf.save()
     response.write(tmp_pdf.getvalue())
