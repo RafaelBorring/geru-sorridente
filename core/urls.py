@@ -31,4 +31,8 @@ urlpatterns = [
         'bloquear/<int:ano>/<int:mes>/<int:dia>/',
         views.bloquear, name='core.bloquear'
     ),
+    path(
+        'desbloquear/',
+        views.desbloquear, name='core.desbloquear'
+    )
 ]

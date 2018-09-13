@@ -74,7 +74,7 @@ def marcacao(request, ano, mes, dia):
                         date.fromordinal(last_date).strftime('%d/%m/%Y'),
                         date.fromordinal(last_date + 16).strftime('%d/%m/%Y')
                     )})
-            elif not post.user.is_active:
+            elif post.user.is_locked:
                 return render(request, 'core/marcacao.html', {
                     'form': form, 'data': data,
                     'message': '''
@@ -97,13 +97,12 @@ class Calendario(LocaleHTMLCalendar):
     def __init__(self, user, hoje):
         super(Calendario, self).__init__(6, 'pt_BR.UTF-8')
         self.tipo = user.tipo
+        self.hoje = hoje
         if self.tipo == 1:
             self.equipe = user.equipe
-            self.hoje = hoje
         elif self.tipo == 3:
             self.equipe = user.acs.equipe
             self.micro = user.acs
-            self.hoje = hoje
 
     def formatmonth(self, ano, mes):
         self.ano = ano
@@ -323,7 +322,7 @@ def lista(request, ano, mes, dia):
     user = request.user
     listed = models.Marcacao.objects.filter(
         user__acs__equipe=user.equipe, data='{}-{}-{}'.format(ano, mes, dia)
-    )
+    ).order_by('pk')
     margin = 2*cm
     x, y = A4
     response = HttpResponse(content_type='application/pdf')
@@ -413,15 +412,40 @@ def bloquear(request, ano, mes, dia):
     data = '{}-{}-{}'.format(ano, mes, dia)
     lista = models.Marcacao.objects.filter(
         user__acs__equipe=user.equipe, data=data
-    )
+    ).order_by('pk')
     if request.method == "POST":
         for i in lista:
             if request.POST.get('{}'.format(i.user)) == 'on':
                 usu_lock = models.Usuario.objects.get(pk=i.user.id)
-                usu_lock.is_active = False
+                usu_lock.is_locked = True
                 usu_lock.save()
         form = forms.BloquearForm(lista=lista)
         return redirect('core.calendario')
     else:
         form = forms.BloquearForm(lista=lista)
-    return render(request, 'core/bloquear.html', {'form': form})
+    if user.tipo == 1:
+        return render(request, 'core/bloquear.html', {'form': form})
+    else:
+        return render(request, 'core/index.html')
+
+
+@login_required(login_url='auth.login')
+def desbloquear(request):
+    user = request.user
+    lista = models.Usuario.objects.filter(
+        acs=user, is_locked=True
+    ).order_by('nome')
+    if request.method == "POST":
+        for i in lista:
+            if request.POST.get('{}'.format(i)) == 'on':
+                usu_unlock = models.Usuario.objects.get(pk=i.id)
+                usu_unlock.is_locked = False
+                usu_unlock.save()
+        form = forms.DesbloquearForm(lista=lista)
+        return redirect('core.index')
+    else:
+        form = forms.DesbloquearForm(lista=lista)
+    if user.tipo == 2:
+        return render(request, 'core/desbloquear.html', {'form': form})
+    else:
+        return render(request, 'core/index.html')

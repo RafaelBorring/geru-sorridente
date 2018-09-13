@@ -106,6 +106,7 @@ class Usuario(AbstractBaseUser):
     tipo = models.PositiveIntegerField('Tipo de Acesso', default=3)
     is_active = models.BooleanField('Ativo', default=True)
     is_staff = models.BooleanField('Acesso ao Admin', default=False)
+    is_locked = models.BooleanField('Bloqueado', default=False)
     create_on = models.DateField('Criado em:', auto_now_add=True)
     update_on = models.DateField('Atualizado em:', auto_now=True)
 

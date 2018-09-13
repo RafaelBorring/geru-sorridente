@@ -75,3 +75,11 @@ class BloquearForm(forms.Form):
         super(BloquearForm, self).__init__(*args, **kwargs)
         for i in lista:
             self.fields['{}'.format(i.user)] = forms.BooleanField()
+
+
+class DesbloquearForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        lista = kwargs.pop('lista')
+        super(DesbloquearForm, self).__init__(*args, **kwargs)
+        for i in lista:
+            self.fields['{}'.format(i)] = forms.BooleanField()
