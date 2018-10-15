@@ -21,12 +21,17 @@ footer {
     height: 100px;
 }
 
+header img {
+    width: 70%;
+}
+
 footer img {
-    height: 100px;
+    height: 70px;
 }
 
 img {
     max-width: 100%;
+    border-radius: 10%;
 }
 
 a {
