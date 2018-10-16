@@ -107,5 +107,9 @@ code.desktop
 # SQlite database
 db.sqlite3
 
+# Django migrations
+**/migrations/**
+!**/migrations/__init__.py
+
 # Bash history
 .bash_history
