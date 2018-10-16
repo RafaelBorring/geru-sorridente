@@ -118,7 +118,7 @@ def marcacao(request, ano, mes, dia):
 
             post.save()
 
-            return render(request, 'core/realizada.html', {'id': post.id, 'data': data})
+            return render(request, 'core/realizada.html', {'get_id': post.id, 'data': data})
 
     else:
 
@@ -193,7 +193,7 @@ class Calendario(LocaleHTMLCalendar):
             consulta_id = '{}{}{}{}'.format(self.equipe.area, self.ano, self.mes, dia)
             vagas = models.Marcacao.objects.filter(
                 data='{}-{}-{}'.format(self.ano, self.mes, dia),
-                user__acs__equipe=self.equipe
+                user__acs__equipe=self.equipe, ativo=True
             ).count()
 
             return '''
@@ -235,7 +235,7 @@ class Calendario(LocaleHTMLCalendar):
             total_vagas = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=self.equipe)
             vagas = total_vagas.vaga - models.Marcacao.objects.filter(
                 data='{}-{}-{}'.format(self.ano, self.mes, dia),
-                user__acs__equipe=self.equipe, user__acs=self.micro
+                user__acs__equipe=self.equipe, user__acs=self.micro, ativo=True
             ).count()
 
             if vagas == 0:
@@ -302,11 +302,11 @@ def consultas(request):
 
 
 @login_required(login_url='auth.login')
-def requisicao(request, num_id):
+def requisicao(request, get_id):
     """Impressão da requisição."""
 
     user = request.user
-    req = models.Marcacao.objects.get(id=num_id)
+    req = models.Marcacao.objects.get(id=get_id)
     margin = 2*cm
     x, y = A4
     response = HttpResponse(content_type='application/pdf')
@@ -380,6 +380,10 @@ def lista(request, ano, mes, dia):
         pdf.drawString(margin+4.5*cm, top-margin, '{}'.format(list_value.user.nome))
         pdf.drawString(x-margin-5*cm, top-margin, '{}'.format(list_value.motivo))
         pdf.drawString(x-margin-cm, top-margin, '{}'.format(list_value.get_protese_display()))
+
+        if not list_value.ativo:
+
+            pdf.line(margin, top-margin+3, x-margin, top-margin+3)
 
     pdf.showPage()
     pdf.save()
@@ -508,5 +512,15 @@ def desbloquear(request):
     if user.tipo == 2:
 
         return render(request, 'core/desbloquear.html', {'form': form})
+
+    return render(request, 'core/index.html')
+
+
+def desmarcar(request, get_id):
+    """Desmarca consulta."""
+
+    marc = models.Marcacao.objects.get(id=get_id)
+    marc.ativo = False
+    marc.save()
 
     return render(request, 'core/index.html')
