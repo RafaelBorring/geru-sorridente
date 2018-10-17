@@ -13,21 +13,21 @@
                         <table class="table">
                             <tbody>
                                 <tr><td><legend>Consulta no dia {{ data }} marcada com sucesso!</legend></td></tr>
-                                <tr><td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#req{{ id }}">Imprimir Requisição</button></td></tr>
+                                <tr><td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#req{{ get_id }}">Imprimir Requisição</button></td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="req{{ id }}" tabindex="-1" role="dialog">
+            <div class="modal fade" id="req{{ get_id }}" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="req{{ id }}">Requisição</h5>
+                            <h5 class="modal-title" id="req{{ get_id }}">Requisição</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
-                            <object type="application/pdf" data="{% url 'core.requisicao' id=id %}#zoom=page-width" width="100%" height="100%"></object>
+                            <object type="application/pdf" data="{% url 'core.requisicao' get_id=get_id %}#zoom=page-width" width="100%" height="100%"></object>
                         </div>
                     </div>
                 </div>

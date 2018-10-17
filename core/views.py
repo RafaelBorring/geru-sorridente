@@ -523,4 +523,4 @@ def desmarcar(request, get_id):
     marc.ativo = False
     marc.save()
 
-    return render(request, 'core/index.html')
+    return redirect('core.consultas')

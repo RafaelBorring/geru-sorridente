@@ -4,6 +4,10 @@
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'core/css/cadastro.css' %}">
 {% endblock style %}
+{% block script %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'core/js/consultas.js' %}"></script>
+{% endblock script %}
 {% block section %}
     <section>
         <div class="container-fluid">
@@ -17,7 +21,7 @@
                                     <td><legend>{{ list.data }}</legend></td>
                                     {% if list.ativo == True %}
                                     <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#req{{ list.id }}">Imprimir Requisição</button></td>
-                                    <td><a type="button" class="btn btn-warning" href="{% url 'core.desmarcar' get_id=list.id %}">Desmarcar Agendamento</a></td>
+                                    <td><a type="button" id="desmarcar" class="btn btn-warning" href="{% url 'core.desmarcar' get_id=list.id %}">Desmarcar Agendamento</a></td>
                                     {% else %}
                                     <td><button type="button" class="btn btn-danger">Consulta Desmarcada</button></td>
                                     {% endif %}
