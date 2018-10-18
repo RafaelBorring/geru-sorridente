@@ -13,55 +13,46 @@ class UserManager(BaseUserManager):
 
     def create_user(self, **kwargs):
         """Cria o usuário."""
-
         password = kwargs['password']
         kwargs.pop('password')
         user = self.model(**kwargs)
         user.set_password(password)
         user.save(using=self._db)
-
         return user
 
 
 class Unidade(models.Model):
     """Unidades."""
-
     nome = models.CharField('Nome', max_length=50)
     cnes = models.CharField('CNES', max_length=7)
 
     class Meta:
-
         verbose_name = 'Unidade'
         verbose_name_plural = 'Unidades'
         ordering = ['nome']
 
     def __str__(self):
-
         return '{} - {}'.format(self.cnes, self.nome)
 
 
 class Equipe(models.Model):
     """Equipes."""
-
     unidade = models.ForeignKey('Unidade', on_delete=models.CASCADE, verbose_name='Unidade')
     nome = models.CharField('Nome', max_length=50)
     ine = models.CharField('INE', max_length=10)
     area = models.PositiveIntegerField('Área')
 
     class Meta:
-
         verbose_name = 'Equipe'
         verbose_name_plural = 'Equipes'
         ordering = ['area']
 
     def __str__(self):
-
         return '{:04d} - {}'.format(self.area, self.nome)
 
 
 class Odontologo(AbstractBaseUser):
     """Odontólogos."""
-
     objects = UserManager()
     USERNAME_FIELD = 'cns'
     cns = models.CharField('CNS', max_length=18, unique=True)
@@ -74,19 +65,16 @@ class Odontologo(AbstractBaseUser):
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
     class Meta:
-
         verbose_name = 'Odontólogo'
         verbose_name_plural = 'Odontólogos'
         ordering = ['equipe__area', 'nome']
 
     def __str__(self):
-
         return '{} - {}'.format(self.equipe, self.nome)
 
 
 class ACS(AbstractBaseUser):
     """ACS."""
-
     objects = UserManager()
     USERNAME_FIELD = 'cns'
     cns = models.CharField('CNS', max_length=18, unique=True)
@@ -100,19 +88,16 @@ class ACS(AbstractBaseUser):
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
     class Meta:
-
         verbose_name = 'ACS'
         verbose_name_plural = 'ACS'
         ordering = ['equipe__area', 'micro', 'nome']
 
     def __str__(self):
-
         return '{} - {}'.format(self.equipe, self.nome)
 
 
 class Usuario(AbstractBaseUser):
     """Usuários."""
-
     objects = UserManager()
     USERNAME_FIELD = 'cns'
     cns = models.CharField('CNS', max_length=18, unique=True)
@@ -129,19 +114,16 @@ class Usuario(AbstractBaseUser):
     update_on = models.DateField('Atualizado em:', auto_now=True)
 
     class Meta:
-
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'
         ordering = ['nome']
 
     def __str__(self):
-
         return '{} - {}'.format(self.cns, self.nome)
 
 
 class Marcacao(models.Model):
     """Marcação."""
-
     P = (
         ('1', 'Sim'),
         ('0', 'Não')
@@ -159,35 +141,29 @@ class Marcacao(models.Model):
     )
 
     class Meta:
-
         verbose_name = 'Marcação'
         verbose_name_plural = 'Marcações'
         ordering = ['-data']
 
     def __str__(self):
-
         return '{} - {} - {}'.format(self.data, self.user.cns, self.user.nome)
 
 
 class Motivo(models.Model):
     """Motivos."""
-
     motivo = models.CharField('Motivo', max_length=50)
 
     class Meta:
-
         verbose_name = 'Motivo'
         verbose_name_plural = 'Motivos'
         ordering = ['motivo']
 
     def __str__(self):
-
         return self.motivo
 
 
 class Agenda(models.Model):
     """Agenda."""
-
     mes = models.PositiveIntegerField('Mês de Referência')
     ano = models.PositiveIntegerField('Ano de Referência', default=date.today().year)
     dia = models.CharField('Dias', max_length=180)
@@ -196,13 +172,10 @@ class Agenda(models.Model):
     equipe = models.ForeignKey('Equipe', on_delete=models.CASCADE, verbose_name='Equipe')
 
     class Meta:
-
         verbose_name = 'Agenda'
         verbose_name_plural = 'Agendas'
         ordering = ['mes', 'ano']
 
     def __str__(self):
-
         with different_locale('pt_BR.UTF-8'):
-
             return '{} de {}'.format(month_name[self.mes].title(), self.ano)

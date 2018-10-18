@@ -11,12 +11,10 @@ class OdontologoAdmin(admin.ModelAdmin):
     """Odontólogo no admin."""
 
     def save_model(self, request, obj, form, change):
-
         obj.password = make_password(obj.password)
         obj.save()
 
     class Media:
-
         js = [
             'jquery/js/jquery.slim.min.js',
             'jquery/js/jquery.mask.min.js',
@@ -28,12 +26,10 @@ class ACSAdmin(admin.ModelAdmin):
     """ACS no admin."""
 
     def save_model(self, request, obj, form, change):
-
         obj.password = make_password(obj.password)
         obj.save()
 
     class Media:
-
         js = [
             'jquery/js/jquery.slim.min.js',
             'jquery/js/jquery.mask.min.js',
