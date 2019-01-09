@@ -282,14 +282,15 @@ def lista(request, ano, mes, dia):
     pdf.drawString(margin, y-margin, '{}'.format(user.equipe))
     pdf.drawString(x-margin-cm, y-margin, '{:02d}/{:02d}/{}'.format(dia, mes, ano))
     top = y-cm
-    pdf.drawString(margin, top-margin, 'CNS')
+    pdf.drawString(margin, top-margin, 'CNS/CONTATO')
     pdf.drawString(margin+4.5*cm, top-margin, 'NOME')
     pdf.drawString(x-margin-5*cm, top-margin, 'MOTIVO')
     pdf.drawString(x-margin-cm, top-margin, 'PRÓTESE')
     pdf.setFont('Times-Roman', 10)
     for list_value in listed:
         top -= cm
-        pdf.drawString(margin, top-margin, '{}'.format(list_value.user.cns))
+        pdf.drawString(margin, top-margin+0.15*cm, '{}'.format(list_value.user.cns))
+        pdf.drawString(margin, top-margin-0.15*cm, '{}'.format(list_value.user.telefone))
         pdf.drawString(margin+4.5*cm, top-margin, '{}'.format(list_value.user.nome))
         pdf.drawString(x-margin-5*cm, top-margin, '{}'.format(list_value.motivo))
         pdf.drawString(x-margin-cm, top-margin, '{}'.format(list_value.get_protese_display()))
