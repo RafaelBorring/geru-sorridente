@@ -46,6 +46,7 @@ class AgendaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.ano = kwargs.pop('ano')
         self.mes = kwargs.pop('mes')
+        self.equipe = kwargs.pop('equipe')
         super(AgendaForm, self).__init__(*args, **kwargs)
         vaga_dia = []
         with different_locale('pt_BR.UTF-8'):
@@ -59,7 +60,7 @@ class AgendaForm(forms.ModelForm):
         self.fields['dia'].widget.choices = vaga_dia
 
     def clean(self):
-        if models.Agenda.objects.filter(ano=self.ano, mes=self.mes):
+        if models.Agenda.objects.filter(ano=self.ano, mes=self.mes, equipe=self.equipe):
             raise forms.ValidationError('Já existe agenda nesse mês!')
         return self.cleaned_data
 

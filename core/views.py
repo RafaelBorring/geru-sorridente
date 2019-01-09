@@ -331,7 +331,7 @@ def agenda(request, ano, mes):
     user = request.user
     if user.tipo == 1:
         if request.method == "POST":
-            form = forms.AgendaForm(request.POST, ano=ano, mes=mes)
+            form = forms.AgendaForm(request.POST, ano=ano, mes=mes, equipe=user.equipe)
             if form.is_valid():
                 post = form.save(commit=False)
                 post.ano = ano
@@ -339,7 +339,7 @@ def agenda(request, ano, mes):
                 post.equipe = user.equipe
                 post.save()
                 return render(request, 'core/criada.html')
-        form = forms.AgendaForm(ano=ano, mes=mes)
+        form = forms.AgendaForm(ano=ano, mes=mes, equipe=user.equipe)
         return render(request, 'core/agenda.html', {'form': form, 'ano': ano, 'mes': nome_mes})
     return render(request, 'core/index.html')
 
