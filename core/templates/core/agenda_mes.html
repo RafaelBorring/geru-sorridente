@@ -1,0 +1,56 @@
+{% extends 'core/index.html' %}
+{% load static %}
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'core/css/cadastro.css' % %}">
+{% endblock style %}
+{% block script %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'core/js/agenda_mes.js' %}"></script>
+{% endblock script %}
+{% block section %}
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <form role="form" class="form" method="POST" novalidate>{% csrf_token %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr><h4>{{ message|linebreaksbr }}</h4></tr>
+                                    <tr>
+                                        <td><legend>Criar Agenda de {{ ano }}:</legend></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a type="button" id=1 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=1 %}">Janeiro</a></td>
+                                        <td><a type="button" id=7 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=7 %}">Julho</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a type="button" id=2 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=2 %}">Fevereiro</a></td>
+                                        <td><a type="button" id=8 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=8 %}">Agosto</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a type="button" id=3 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=3 %}">Março</a></td>
+                                        <td><a type="button" id=9 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=9 %}">Setembro</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a type="button" id=4 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=4 %}">Abril</a></td>
+                                        <td><a type="button" id=10 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=10 %}">Outubro</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a type="button" id=5 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=5 %}">Maio</a></td>
+                                        <td><a type="button" id=11 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=11 %}">Novembro</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a type="button" id=6 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=6 %}">Junho</a></td>
+                                        <td><a type="button" id=12 class="btn btn-warning" href="{% url 'core.agenda' ano=ano mes=12 %}">Dezembro</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock section %}

@@ -1,0 +1,23 @@
+{% extends 'core/index.html' %}
+{% load static %}
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'core/css/cadastro.css' %}">
+{% endblock style %}
+{% block section %}
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr><td><legend>Agenda criada com sucesso!</legend></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock section %}
