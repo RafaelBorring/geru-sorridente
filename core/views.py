@@ -39,12 +39,18 @@ def marcacao(request, ano, mes, dia):
         dia_marcacao = date(ano, mes, dia)
         data = '{:02d} de {} de {}'.format(dia, month_name[mes], ano)
     try:
-        dias_marc = models.Agenda.objects.get(ano=ano, mes=mes, equipe=user.acs.equipe)
+        dias_marc1 = models.Agenda.objects.get(ano=ano, mes=mes, equipe=1)
     except models.Agenda.DoesNotExist:
-        dias_marc = None
-    if dias_marc:
-        dias = [int(i) for i in dias_marc.dia.split("'") if i.isdigit()]
-    if dia_marcacao <= date.today() or not dias_marc or dia not in dias:
+        dias_marc1 = None
+    try:
+        dias_marc4 = models.Agenda.objects.get(ano=ano, mes=mes, equipe=4)
+    except models.Agenda.DoesNotExist:
+        dias_marc4 = None
+    if dias_marc1:
+        dias1 = [int(i) for i in dias_marc1.dia.split("'") if i.isdigit()]
+    if dias_marc4:
+        dias4 = [int(i) for i in dias_marc4.dia.split("'") if i.isdigit()]
+    if dia_marcacao <= date.today() or (not dias_marc1 and not dias_marc4) or (dia not in dias1 and dia not in dias4):
         return redirect('core.index')
     elif request.method == "POST":
         form = forms.MarcacaoForm(request.POST)
@@ -111,12 +117,18 @@ class Calendario(LocaleHTMLCalendar):
     def formatday(self, dia, semana):
         """Formata o dia."""
         try:
-            dias_marc = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=self.equipe)
+            dias_marc1 = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=1)
         except models.Agenda.DoesNotExist:
-            dias_marc = None
-        if dias_marc:
-            dias = [int(i) for i in dias_marc.dia.split("'") if i.isdigit()]
-        if dia == 0 or not dias_marc or dia not in dias:
+            dias_marc1 = None
+        try:
+            dias_marc4 = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=4)
+        except models.Agenda.DoesNotExist:
+            dias_marc4 = None
+        if dias_marc1:
+            dias1 = [int(i) for i in dias_marc1.dia.split("'") if i.isdigit()]
+        if dias_marc4:
+            dias4 = [int(i) for i in dias_marc4.dia.split("'") if i.isdigit()]
+        if dia == 0 or (not dias_marc1 and not dias_marc4) or (dia not in dias1 and dia not in dias4):
             return '<td class="noday">&nbsp;</td>'
         elif self.tipo == 1 and dia <= self.hoje:
             vagas = models.Marcacao.objects.filter(
@@ -169,10 +181,12 @@ class Calendario(LocaleHTMLCalendar):
         elif dia <= self.hoje:
             return '<td class="noday">&nbsp;</td>'
         elif self.tipo == 3:
-            total_vagas = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=self.equipe)
+            if dias_marc1:
+                total_vagas = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=1)
+            if dias_marc4:
+                total_vagas = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=4)
             vagas = total_vagas.vaga - models.Marcacao.objects.filter(
-                data='{}-{}-{}'.format(self.ano, self.mes, dia),
-                user__acs__equipe=self.equipe, user__acs=self.micro, ativo=True
+                data='{}-{}-{}'.format(self.ano, self.mes, dia), ativo=True
             ).count()
             if vagas == 0:
                 return '''
@@ -230,6 +244,15 @@ def requisicao(request, get_id):
     """Impressão da requisição."""
     user = request.user
     req = models.Marcacao.objects.get(id=get_id)
+    dia = req.data.strftime('%d')
+    mes = req.data.strftime('%m')
+    ano = req.data.strftime('%Y')
+    agenda1 = models.Agenda.objects.get(mes=mes, ano=ano, equipe=1)
+    agenda4 = models.Agenda.objects.get(mes=mes, ano=ano, equipe=4)
+    if dia in agenda1.dia:
+        agenda = agenda1
+    if dia in agenda4.dia:
+        agenda = agenda4
     margin = 2*cm
     x, y = A4
     response = HttpResponse(content_type='application/pdf')
@@ -250,8 +273,8 @@ def requisicao(request, get_id):
     pdf.drawString(margin, y-margin-6*cm, 'Nome:')
     pdf.drawString(margin, y-margin-7*cm, 'Logradouro:')
     pdf.setFont('Times-Roman', 10)
-    pdf.drawString(margin+3*cm, y-margin-2*cm, '{}'.format(req.user.acs.equipe.unidade))
-    pdf.drawString(margin+3*cm, y-margin-3*cm, '{}'.format(req.user.acs.equipe))
+    pdf.drawString(margin+3*cm, y-margin-2*cm, '{}'.format(agenda.equipe.unidade))
+    pdf.drawString(margin+3*cm, y-margin-3*cm, '{}'.format(agenda.equipe))
     pdf.drawString(margin+3*cm, y-margin-4*cm, '{}'.format(req.data.strftime('%d/%m/%Y')))
     pdf.drawString(margin+3*cm, y-margin-5*cm, user.cns)
     pdf.drawString(margin+3*cm, y-margin-6*cm, user.nome)
