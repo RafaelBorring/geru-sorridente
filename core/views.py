@@ -43,14 +43,21 @@ def marcacao(request, ano, mes, dia):
     except models.Agenda.DoesNotExist:
         dias_marc1 = None
     try:
+        dias_marc2 = models.Agenda.objects.get(ano=ano, mes=mes, equipe=2)
+    except models.Agenda.DoesNotExist:
+        dias_marc2 = None
+    try:
         dias_marc4 = models.Agenda.objects.get(ano=ano, mes=mes, equipe=4)
     except models.Agenda.DoesNotExist:
         dias_marc4 = None
     if dias_marc1:
         dias1 = [int(i) for i in dias_marc1.dia.split("'") if i.isdigit()]
+    if dias_marc2:
+        dias2 = [int(i) for i in dias_marc2.dia.split("'") if i.isdigit()]
     if dias_marc4:
         dias4 = [int(i) for i in dias_marc4.dia.split("'") if i.isdigit()]
-    if dia_marcacao <= date.today() or (not dias_marc1 and not dias_marc4) or (dia not in dias1 and dia not in dias4):
+    if dia_marcacao <= date.today() or (not dias_marc1 and not dias_marc2 and not dias_marc4) or\
+            (dia not in dias1 and dia not in dias2 and dia not in dias4):
         return redirect('core.index')
     elif request.method == "POST":
         form = forms.MarcacaoForm(request.POST)
@@ -121,14 +128,27 @@ class Calendario(LocaleHTMLCalendar):
         except models.Agenda.DoesNotExist:
             dias_marc1 = None
         try:
+            dias_marc2 = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=2)
+        except models.Agenda.DoesNotExist:
+            dias_marc2 = None
+        try:
             dias_marc4 = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=4)
         except models.Agenda.DoesNotExist:
             dias_marc4 = None
         if dias_marc1:
             dias1 = [int(i) for i in dias_marc1.dia.split("'") if i.isdigit()]
+        else:
+            dias1 = []
+        if dias_marc2:
+            dias2 = [int(i) for i in dias_marc2.dia.split("'") if i.isdigit()]
+        else:
+            dias2 = []
         if dias_marc4:
             dias4 = [int(i) for i in dias_marc4.dia.split("'") if i.isdigit()]
-        if dia == 0 or (not dias_marc1 and not dias_marc4) or (dia not in dias1 and dia not in dias4):
+        else:
+            dias4 = []
+        if dia == 0 or (not dias_marc1 and not dias_marc2 and not dias_marc4) or\
+                (dia not in dias1 and dia not in dias2 and dia not in dias4):
             return '<td class="noday">&nbsp;</td>'
         elif self.tipo == 1 and dia <= self.hoje:
             vagas = models.Marcacao.objects.filter(
@@ -183,6 +203,8 @@ class Calendario(LocaleHTMLCalendar):
         elif self.tipo == 3:
             if dias_marc1:
                 total_vagas = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=1)
+            if dias_marc2:
+                total_vagas = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=2)
             if dias_marc4:
                 total_vagas = models.Agenda.objects.get(ano=self.ano, mes=self.mes, equipe=4)
             vagas = total_vagas.vaga - models.Marcacao.objects.filter(
@@ -248,9 +270,12 @@ def requisicao(request, get_id):
     mes = req.data.strftime('%m')
     ano = req.data.strftime('%Y')
     agenda1 = models.Agenda.objects.get(mes=mes, ano=ano, equipe=1)
+    agenda2 = models.Agenda.objects.get(mes=mes, ano=ano, equipe=2)
     agenda4 = models.Agenda.objects.get(mes=mes, ano=ano, equipe=4)
     if dia in agenda1.dia:
         agenda = agenda1
+    if dia in agenda2.dia:
+        agenda = agenda2
     if dia in agenda4.dia:
         agenda = agenda4
     margin = 2*cm
