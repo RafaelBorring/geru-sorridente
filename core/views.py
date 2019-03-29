@@ -315,9 +315,7 @@ def requisicao(request, get_id):
 def lista(request, ano, mes, dia):
     """Lista de pacientes."""
     user = request.user
-    listed = models.Marcacao.objects.filter(
-        user__acs__equipe=user.equipe, data='{}-{}-{}'.format(ano, mes, dia)
-    ).order_by('pk')
+    listed = models.Marcacao.objects.filter(data='{}-{}-{}'.format(ano, mes, dia)).order_by('pk')
     margin = 2*cm
     x, y = A4
     response = HttpResponse(content_type='application/pdf')
